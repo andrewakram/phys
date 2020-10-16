@@ -38,6 +38,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function group(){
+        return $this->belongsTo(Group::class,'group_id');
+    }
+
 //    protected  $primaryKey = 'jwt';
 //    public $incrementing = false;
 

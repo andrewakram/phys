@@ -17,22 +17,24 @@ class HomeController extends Controller
 
     public function dashboard()
     {
-        $dashboard = $this->homeRepository->dashboard();
-        $users_charts = DB::SELECT("select id, count(*) as count,
-            date(created_at) as date from users
-        WHERE   date(created_at) >= DATE(NOW()) - INTERVAL 30 DAY GROUP BY date(created_at)");
-        $workers_charts = DB::SELECT("select id, count(*) as count,
-            date(created_at) as date from workers
-        WHERE   date(created_at) >= DATE(NOW()) - INTERVAL 30 DAY GROUP BY date(created_at)");
-        $orders_charts = DB::SELECT("select id, count(*) as count,
-            date(created_at) as date from orders
-        WHERE   date(created_at) >= DATE(NOW()) - INTERVAL 30 DAY GROUP BY date(created_at)");
-        return view('admin.dashboard',compact(
-            'dashboard',
-            'users_charts',
-            'workers_charts',
-            'orders_charts'
-        ));
+
+        return view('index');
+//        $dashboard = $this->homeRepository->dashboard();
+//        $users_charts = DB::SELECT("select id, count(*) as count,
+//            date(created_at) as date from users
+//        WHERE   date(created_at) >= DATE(NOW()) - INTERVAL 30 DAY GROUP BY date(created_at)");
+//        $workers_charts = DB::SELECT("select id, count(*) as count,
+//            date(created_at) as date from workers
+//        WHERE   date(created_at) >= DATE(NOW()) - INTERVAL 30 DAY GROUP BY date(created_at)");
+//        $orders_charts = DB::SELECT("select id, count(*) as count,
+//            date(created_at) as date from orders
+//        WHERE   date(created_at) >= DATE(NOW()) - INTERVAL 30 DAY GROUP BY date(created_at)");
+//        return view('admin.dashboard',compact(
+//            'dashboard',
+//            'users_charts',
+//            'workers_charts',
+//            'orders_charts'
+//        ));
     }
 
     public function settings($type)

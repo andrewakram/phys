@@ -15,14 +15,13 @@ class AuthController extends Controller
             return redirect('/admin/dashboard');
         }
 
-        return view('admin.login.login');
+        return view('login.index');
     }
 
     public function login(Request $request)
     {
         if(Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], false))
         {
-
             return redirect(route('dashboard'));
         }else{
             return back()->with('error', 'Invalid Credentials');

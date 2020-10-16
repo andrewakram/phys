@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Interfaces\Admin\UserRepositoryInterface;
+use App\Http\Controllers\Interfaces\IndexRepositoryInterface;
 use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -10,17 +11,19 @@ use App\Http\Controllers\Controller;
 class UserController extends Controller
 {
     protected $userRepository;
-    public function __construct(UserRepositoryInterface $userRepository)
+    protected $indexRepository;
+    public function __construct(UserRepositoryInterface $userRepository,IndexRepositoryInterface $indexRepository)
     {
         $this->userRepository = $userRepository;
+        $this->indexRepository = $indexRepository;
     }
 
-    public function index($type)
+    public function index()
     {
-        if($type == 'active') $users = $this->userRepository->activeUsers()->paginate(20);
-        else $users = $this->userRepository->suspendedUsers()->paginate(20);
+        $results = $this->indexRepository->index('User')->with('group')->paginate(20);
+//        else $users = $this->userRepository->suspendedUsers()->paginate(20);
 
-        return view('admin.users.index', compact('users','type'));
+        return view('users.index', compact('results'));
     }
 
     public function create()
