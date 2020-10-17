@@ -32,24 +32,25 @@ class IndexRepository implements IndexRepositoryInterface
 
     public function create($model,$request){
         $class="\\App\\Models\\".$model;
-        $object = $class::query();
-        $object->create($request);
-    }
-
-    public function edit($model,$id){
-        $class="\\App\\Models\\".$model;
-        return $class::whereId($id)->first();
+        $class::create($request);
     }
 
     public function update($model,$request,$id){
         $class="\\App\\Models\\".$model;
-        $object = $class::find($id);
-        $object->update($request);
+        $class::whereId($id)->update($request);
     }
 
     public function delete($model,$id){
         $class="\\App\\Models\\".$model;
         $class::destroy($id);
+    }
+
+    public function checkIfExists($model,$colom,$value){
+        $class="\\App\\Models\\".$model;
+        $check = $class::where($colom,$value)->first();
+        if($check)
+            return true;
+        return false;
     }
 
 }

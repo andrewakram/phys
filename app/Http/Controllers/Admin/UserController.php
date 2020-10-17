@@ -4,15 +4,16 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Interfaces\Admin\UserRepositoryInterface;
 use App\Http\Controllers\Interfaces\IndexRepositoryInterface;
-use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
     protected $userRepository;
     protected $indexRepository;
-    public function __construct(UserRepositoryInterface $userRepository,IndexRepositoryInterface $indexRepository)
+
+    public function __construct(UserRepositoryInterface $userRepository, IndexRepositoryInterface $indexRepository)
     {
         $this->userRepository = $userRepository;
         $this->indexRepository = $indexRepository;
@@ -21,65 +22,68 @@ class UserController extends Controller
     public function index()
     {
         $results = $this->indexRepository->index('User')->with('group')->paginate(20);
-//        else $users = $this->userRepository->suspendedUsers()->paginate(20);
-
-        return view('users.index', compact('results'));
+        $groups = $this->indexRepository->index('Group')->get();
+        return view('users.index', compact('results', 'groups'));
     }
 
     public function create()
     {
-       //
+        //
     }
 
     public function store(Request $request)
     {
-        $user = $this->userRepository->CreateUser($request);
-        if($user == 'email_exist')
-            return redirect(route('users_view','active'))->with('error','Email already exist!');
-        else if($user == 'phone_exist')
-            return redirect(route('users_view','active'))->with('error','Phone already exist!');
-        else
-            return redirect(route('users_view','active'))->with('success','Successfully created.');
+        $user = $this->indexRepository->checkIfExists("User", "phone", $request->phone);
+        if ($user)
+            return back()->with('error', 'رقم الهاتف موجود من قبل');
+        else {
+            $this->indexRepository
+                ->create("User", array_merge($request->all(), ['password' => Hash::make($request->password)]));
+            return back()->with('success', 'تمت العملية بنجاح');
+        }
+
+    }
+
+    public function update(Request $request)
+    {
+        $this->validate($request, [
+            'phone' => 'required|unique:users,phone,' . "$request->model_id",
+        ]);
+        $this->indexRepository
+            ->update("User", array_merge($request->except('_token','model_id'), ['password' => Hash::make($request->password)]), $request->model_id);
+        return back()->with('success', 'تمت العملية بنجاح');
+
+    }
+
+    public function delete(Request $request)
+    {
+        $this->indexRepository->delete("User",$request->model_id);
+        return back()->with('success', 'تمت العملية بنجاح');
     }
 
     public function show($id)
     {
         $user = $this->userRepository->profile($id);
-        return view('admin.users.show',compact('user'));
+        return view('admin.users.show', compact('user'));
     }
 
     public function changeStatus(Request $request)
     {
-        $this->validate($request,[
-           'user_id' => 'required|exists:users,id'
+        $this->validate($request, [
+            'user_id' => 'required|exists:users,id'
         ]);
 
         $user = $this->userRepository->changStatus($request->user_id);
-        if($user == 'suspend')
-            return back()->with('success','User suspended successfully');
+        if ($user == 'suspend')
+            return back()->with('success', 'User suspended successfully');
         else
-            return back()->with('success','User activated successfully');
-    }
-
-    public function edit($id)
-    {
-        //
-    }
-
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    public function destroy($id)
-    {
-        //
+            return back()->with('success', 'User activated successfully');
     }
 
     public function search(Request $request)
     {
         $users = $this->userRepository->search($request);
-        $type='';
-        return view('admin.users.index',compact('users','type'));
+        $type = '';
+        return view('admin.users.index', compact('users', 'type'));
     }
 }

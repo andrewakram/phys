@@ -11,13 +11,13 @@
                 <div class="btn-group pull-left">
                     <ol class="breadcrumb hide-phone p-0 m-0">
                         <li class="breadcrumb-item"><a href="{{route('dashboard')}}">الرئيسية</a></li>
-                        <li class="breadcrumb-item active">الطلاب</li>
+                        <li class="breadcrumb-item active">المجموعات</li>
                     </ol>
                 </div>
-                <h4 class="page-title p-2">الطلاب
+                <h4 class="page-title p-2">المجموعات
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal"><i
                             class="icon-plus"></i>
-                        اضافة طالب
+                        اضافة مجموعة
                     </button>
                 </h4>
             </div>
@@ -34,7 +34,7 @@
             <div class="card m-b-20">
                 <div class="card-body">
 
-                    <h4 class="mt-0 header-title">الطلاب
+                    <h4 class="mt-0 header-title">المجموعات
 
                     </h4>
                     {{--                    <p class="text-muted m-b-30 font-14">Add <code>.table-bordered</code> for--}}
@@ -45,9 +45,9 @@
                         <thead>
                         <tr>
                             <th>#</th>
+                            <th>رقم المجموعة</th>
                             <th>الاسم</th>
-                            <th>الموبايل</th>
-                            <th>المجموعة</th>
+                            <th>المرحلة الدراسية</th>
                             <th>العمليات</th>
                         </tr>
                         </thead>
@@ -55,13 +55,12 @@
                         @foreach($results as $result)
                             <tr>
                                 <th scope="row">{{$result->id}}</th>
+                                <td>{{$result->group_num}}</td>
                                 <td>{{$result->name}}</td>
-                                <td>{{$result->phone}}</td>
                                 <td>
-                                    @if($result->group)
-                                        <span>#: </span> <b>{{$result->group->id}}</b> <br>
-                                        <span>رقم المجموعة: </span> <b>{{$result->group->group_num}}</b> <br>
-                                        <span>اسم المجموعة: </span> <b>{{$result->group->name}}</b> <br>
+                                    @if($result->stage)
+                                        <span>#: </span> <b>{{$result->stage->id}}</b> <br>
+                                        <span>اسم المرحلة: </span> <b>{{$result->stage->name}}</b> <br>
                                         {{--                                        {{$result->group->stage_id}}--}}
                                     @else
                                         -
@@ -80,12 +79,12 @@
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">تعديل بيانات الطالب</h5>
+                                            <h5 class="modal-title" id="exampleModalLabel">تعديل بيانات المجموعة</h5>
 {{--                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">--}}
 {{--                                                <span aria-hidden="true">&times;</span>--}}
 {{--                                            </button>--}}
                                         </div>
-                                        <form class="form-horizontal" method="post" action="{{route('editUser')}}" enctype="multipart/form-data">
+                                        <form class="form-horizontal" method="post" action="{{route('editGroup')}}" enctype="multipart/form-data">
                                             {{csrf_field()}}
                                             <div class="modal-body">
                                                 <input type="hidden" name="model_id" value="{{$result->id}}">
@@ -100,27 +99,12 @@
                                                 </div>
 
                                                 <div class="form-group row">
-                                                    <label class="col-lg-12 control-label text-lg-right" for="textinput"> الموبايل</label>
+                                                    <label class="col-lg-12 control-label text-lg-right" for="textinput">المراحل الدراسية</label>
                                                     <div class="col-lg-12">
-                                                        <input id="phone" name="phone" type="text" placeholder=" الموبايل" value="{{$result->phone}}" class="form-control btn-square" required oninvalid="this.setCustomValidity('هذا الحقل مطلوب ادخاله')">
-                                                        <div class="invalid-feedback">هذا الحقل مطلوب ادخاله .</div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group row">
-                                                    <label class="col-lg-12 control-label text-lg-right" for="textinput"> كلمة المرور</label>
-                                                    <div class="col-lg-12">
-                                                        <input id="password" name="password" type="password" placeholder=" كلمة المرور" class="form-control btn-square" >
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group row">
-                                                    <label class="col-lg-12 control-label text-lg-right" for="textinput">المجموعة</label>
-                                                    <div class="col-lg-12">
-                                                        <select name="group_id" class="btn form-control b-light digits" required oninvalid="this.setCustomValidity('هذا الحقل مطلوب ادخاله')" >
-                                                            <option value="" disabled>اختر المجموعة</option>
-                                                            @foreach($groups as $group)
-                                                                <option value="{{$group->id}}" {{$group->id == $result->group->id ? "selected" : ""}}>{{$group->name}} / {{$group->group_num}}</option>
+                                                        <select name="stage_id" class="btn form-control b-light digits" required oninvalid="this.setCustomValidity('هذا الحقل مطلوب ادخاله')" >
+                                                            <option value="" disabled>اختر المرحلة الدراسية</option>
+                                                            @foreach($stages as $stage)
+                                                                <option value="{{$stage->id}}" {{$stage->id == $result->stage->id ? "selected" : ""}}>{{$stage->name}}</option>
                                                             @endforeach
                                                         </select>
                                                         <div class="invalid-feedback">هذا الحقل مطلوب ادخاله .</div>
@@ -141,19 +125,20 @@
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header btn-danger">
-                                            <h5 class="modal-title" id="exampleModalLabel">حذف الطالب</h5>
+                                            <h5 class="modal-title" id="exampleModalLabel">حذف المجموعة</h5>
 {{--                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">--}}
 {{--                                                <span aria-hidden="true">&times;</span>--}}
 {{--                                            </button>--}}
                                         </div>
-                                        <form method="post" action="{{route('deleteUser')}}" class="buttons">
+                                        <form method="post" action="{{route('deleteGroup')}}" class="buttons">
                                             {{csrf_field()}}
                                             <div class="modal-body">
                                                 <h4>هل انت متأكد ؟</h4>
                                                 <h6>
-                                                    انت علي وشك حذف الطالب
+                                                    انت علي وشك حذف المجموعة
+                                                    <br>رقم المجموعة: ({{$result->group_num}})
                                                     <br>الاسم: ({{$result->name}})
-                                                    <br>الموبايل: ({{$result->phone}})
+
                                                 </h6>
                                             </div>
                                             <div class="modal-footer">
@@ -178,12 +163,12 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">اضافة دولة</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">اضافة مجموعة</h5>
 {{--                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="float: left">--}}
 {{--                        <span aria-hidden="true">&times;</span>--}}
 {{--                    </button>--}}
                 </div>
-                <form class="form-horizontal needs-validation was-validated" method="post" action="{{route('addUser')}}" enctype="multipart/form-data">
+                <form class="form-horizontal needs-validation was-validated" method="post" action="{{route('addGroup')}}" enctype="multipart/form-data">
                     {{csrf_field()}}
                     <div class="modal-body">
 
@@ -196,31 +181,13 @@
                             </div>
                         </div>
 
-
-
                         <div class="form-group row">
-                            <label class="col-lg-12 control-label text-lg-right" for="textinput"> الموبايل</label>
+                            <label class="col-lg-12 control-label text-lg-right" for="textinput">المراحل الدراسية</label>
                             <div class="col-lg-12">
-                                <input id="phone" name="phone" type="text" placeholder=" الموبايل" class="form-control btn-square" required oninvalid="this.setCustomValidity('هذا الحقل مطلوب ادخاله')">
-                                <div class="invalid-feedback">هذا الحقل مطلوب ادخاله .</div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label class="col-lg-12 control-label text-lg-right" for="textinput"> كلمة المرور</label>
-                            <div class="col-lg-12">
-                                <input id="password" name="password" type="password" placeholder=" كلمة المرور" class="form-control btn-square" required oninvalid="this.setCustomValidity('هذا الحقل مطلوب ادخاله')">
-                                <div class="invalid-feedback">هذا الحقل مطلوب ادخاله .</div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label class="col-lg-12 control-label text-lg-right" for="textinput">المجموعة</label>
-                            <div class="col-lg-12">
-                                <select name="group_id" class="btn form-control b-light digits" required oninvalid="this.setCustomValidity('هذا الحقل مطلوب ادخاله')" >
-                                    <option value="" selected disabled>اختر المجموعة</option>
-                                    @foreach($groups as $group)
-                                        <option value="{{$group->id}}">{{$group->name}} / {{$group->group_num}}</option>
+                                <select name="stage_id" class="btn form-control b-light digits" required oninvalid="this.setCustomValidity('هذا الحقل مطلوب ادخاله')" >
+                                    <option value="" selected disabled>اختر المرحلة الدراسية</option>
+                                    @foreach($stages as $stage)
+                                        <option value="{{$stage->id}}">{{$stage->name}}</option>
                                     @endforeach
                                 </select>
                                 <div class="invalid-feedback">هذا الحقل مطلوب ادخاله .</div>

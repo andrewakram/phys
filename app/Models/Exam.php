@@ -9,7 +9,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Str;
 
-class Group extends Model
+class Exam extends Model
 {
     use Notifiable,SoftDeletes;
 
@@ -19,7 +19,7 @@ class Group extends Model
      * @var array
      */
     protected $fillable = [
-         'group_num', 'name', 'stage_id'
+         'exam_num', 'name', 'duration', 'degree', 'stage_id'
     ];
 
     protected $hidden = [
@@ -30,9 +30,9 @@ class Group extends Model
         return $this->belongsTo(Stage::class,'stage_id');
     }
 
-    public function setGroupNumAttribute()
+    public function setExamNumAttribute()
     {
-        $this->attributes['group_num'] = rand(100,999) .' - '. Str::random(3) ;
+        $this->attributes['exam_num'] = rand(100,999) .' - '. Str::random(3) ;
     }
 
 

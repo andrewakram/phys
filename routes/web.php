@@ -18,13 +18,37 @@
 
 Route::get('{any}', 'AdmiriaController@index');
 
-Route::group(['prefix' => '/admin','namespace' => 'Admin'], function () {
+Route::group(['prefix' => '/admin', 'namespace' => 'Admin'], function () {
     Route::get('/login', 'AuthController@login_view');
     Route::post('/login', 'AuthController@login')->name('login');
     Route::get('/logout', 'AuthController@logout')->name('logout');
 
     Route::group(['middleware' => 'auth:admin'], function () {
         Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
-        Route::get('/users', 'UserController@index')->name('users');
+
+        Route::group(['prefix' => 'users'], function () {
+            Route::get('/', 'UserController@index')->name('users');
+            Route::post('/add', 'UserController@store')->name('addUser');
+            Route::post('/edit', 'UserController@update')->name('editUser');
+            Route::post('/delete', 'UserController@delete')->name('deleteUser');
+        });
+        Route::group(['prefix' => 'stages'], function () {
+            Route::get('/', 'StageController@index')->name('stages');
+            Route::post('/add', 'StageController@store')->name('addStage');
+            Route::post('/edit', 'StageController@update')->name('editStage');
+            Route::post('/delete', 'StageController@delete')->name('deleteStage');
+        });
+        Route::group(['prefix' => 'groups'], function () {
+            Route::get('/', 'GroupController@index')->name('groups');
+            Route::post('/add', 'GroupController@store')->name('addGroup');
+            Route::post('/edit', 'GroupController@update')->name('editGroup');
+            Route::post('/delete', 'GroupController@delete')->name('deleteGroup');
+        });
+        Route::group(['prefix' => 'exams'], function () {
+            Route::get('/', 'ExamController@index')->name('exams');
+            Route::post('/add', 'ExamController@store')->name('addExam');
+            Route::post('/edit', 'ExamController@update')->name('editExam');
+            Route::post('/delete', 'ExamController@delete')->name('deleteExam');
+        });
     });
 });

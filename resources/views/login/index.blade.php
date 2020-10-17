@@ -26,33 +26,34 @@
                             <input type="password" name="password" class="form-control" id="userpassword" placeholder="Enter password">
                         </div>
 
-                        <div class="form-group row m-t-20">
-                            <div class="col-sm-6">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="customControlInline">
-                                    <label class="custom-control-label" for="customControlInline">Remember me</label>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 text-right">
-                                <button class="btn btn-primary w-md waves-effect waves-light" type="submit">Log In</button>
-                            </div>
+{{--                         <div class="form-group row m-t-20">--}}
+{{--                            <div class="col-sm-6">--}}
+{{--                                <div class="custom-control custom-checkbox">--}}
+{{--                                    <input type="checkbox" class="custom-control-input" id="customControlInline">--}}
+{{--                                    <label class="custom-control-label" for="customControlInline">Remember me</label>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+
+{{--                        </div>--}}
+                        <div class="form-group ">
+                            <button class="btn btn-primary w-md waves-effect waves-light" type="submit">Log In</button>
                         </div>
 
-                        <div class="form-group m-t-10 mb-0 row">
-                            <div class="col-12 m-t-20">
-                                <a href="pages-recoverpw" class="text-muted"><i class="mdi mdi-lock    "></i> Forgot your password?</a>
-                            </div>
-                        </div>
+{{--                        <div class="form-group m-t-10 mb-0 row">--}}
+{{--                            <div class="col-12 m-t-20">--}}
+{{--                                <a href="pages-recoverpw" class="text-muted"><i class="mdi mdi-lock    "></i> Forgot your password?</a>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                     </form>
                 </div>
 
             </div>
         </div>
 
-        <div class="m-t-40 text-center">
-            <p class="text-white">Don't have an account ? <a href="pages-register" class="font-500 font-14 text-white font-secondary"> Signup Now </a> </p>
-            <p class="text-white">© {{ date("Y",strtotime("-1 year")) }} - {{date('Y')}} Admiria. Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesbrand</p>
-        </div>
+{{--        <div class="m-t-40 text-center">--}}
+{{--            <p class="text-white">Don't have an account ? <a href="pages-register" class="font-500 font-14 text-white font-secondary"> Signup Now </a> </p>--}}
+{{--            <p class="text-white">© {{ date("Y",strtotime("-1 year")) }} - {{date('Y')}} Admiria. Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesbrand</p>--}}
+{{--        </div>--}}
 
     </div>
 @endsection

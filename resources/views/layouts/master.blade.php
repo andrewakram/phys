@@ -11,7 +11,7 @@
         @include('layouts.head')
     </head>
 
-    <body>
+    <body dir="rtl" style="text-align: right">
     <!-- Loader -->
     <div id="preloader"><div id="status"><div class="spinner"></div></div></div>
 
@@ -23,8 +23,8 @@
                 @yield('content')
             </div>
         </div>
-        @include('layouts.footer')   
+        @include('layouts.footer')
     </div>
-    @include('layouts.footer-script')  
+    @include('layouts.footer-script')
 </body>
 </html>

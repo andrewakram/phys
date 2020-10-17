@@ -15,6 +15,5 @@ interface IndexRepositoryInterface
     public function create($model,$request);
     public function update($model,$request,$id);
     public function delete($model,$id);
-
-
+    public function checkIfExists($model,$colom,$value);
 }

@@ -15,7 +15,7 @@ class CreateExamsTable extends Migration
     {
         Schema::create('exams', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('exam_num');
+            $table->string('exam_num')->nullable();
             $table->string('name');
             $table->string('duration');
             $table->string('degree');
