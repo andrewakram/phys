@@ -77,9 +77,7 @@ function generateActivationCode()
 function checkJWT($jwt)
 {
     return
-        User::where("jwt",$jwt)->select('id','email','password',
-            'is_captin','country_id','lat','lng')
-            ->first();
+        User::where("jwt",$jwt)->first();
 }
 
 function checkLang()
