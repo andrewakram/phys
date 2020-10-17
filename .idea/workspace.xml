@@ -3,19 +3,23 @@
   <component name="ChangeListManager">
     <list default="true" id="694e53ef-0359-44cb-8de1-feb7c78e0354" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AuthController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/UserController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Eloquent/IndexRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Eloquent/IndexRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Interfaces/IndexRepositoryInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Interfaces/IndexRepositoryInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Group.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Group.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2013_10_12_000000_create_groups_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2013_10_12_000000_create_groups_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2015_10_12_000000_create_exams_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2015_10_12_000000_create_exams_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2016_10_12_000000_create_questions_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2016_10_12_000000_create_questions_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2017_10_12_000000_create_answers_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2017_10_12_000000_create_answers_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/header.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/master.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/login/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/login/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/users/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/tables-responsive.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/tables-responsive.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources2/js/app.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources2/js/bootstrap.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources2/js/components/ExampleComponent.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources2/lang/en/auth.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources2/lang/en/pagination.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources2/lang/en/passwords.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources2/lang/en/validation.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources2/sass/_variables.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources2/sass/app.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources2/views/welcome.blade.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -131,6 +135,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../newNearme" />
@@ -167,7 +172,8 @@
       <workItem from="1602537683953" duration="9129000" />
       <workItem from="1602607131564" duration="4692000" />
       <workItem from="1602709240307" duration="5690000" />
-      <workItem from="1602841441414" duration="32893000" />
+      <workItem from="1602841441414" duration="33136000" />
+      <workItem from="1602926199886" duration="22220000" />
     </task>
     <servers />
   </component>
@@ -179,22 +185,22 @@
       <screen x="0" y="0" width="1280" height="690" />
     </state>
     <state x="371" y="104" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.690@0.0.1280.690" timestamp="1602893120905" />
-    <state x="421" y="104" key="FileChooserDialogImpl" timestamp="1602865732680">
+    <state x="421" y="104" key="FileChooserDialogImpl" timestamp="1602927787975">
       <screen x="0" y="0" width="1280" height="690" />
     </state>
-    <state x="421" y="104" key="FileChooserDialogImpl/0.0.1280.690@0.0.1280.690" timestamp="1602865732680" />
-    <state x="349" y="174" key="com.intellij.ide.util.TipDialog" timestamp="1602841443911">
+    <state x="421" y="104" key="FileChooserDialogImpl/0.0.1280.690@0.0.1280.690" timestamp="1602927787975" />
+    <state x="349" y="174" key="com.intellij.ide.util.TipDialog" timestamp="1602926198319">
       <screen x="0" y="0" width="1280" height="690" />
     </state>
-    <state x="349" y="174" key="com.intellij.ide.util.TipDialog/0.0.1280.690@0.0.1280.690" timestamp="1602841443911" />
-    <state x="452" y="265" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1602889954447">
+    <state x="349" y="174" key="com.intellij.ide.util.TipDialog/0.0.1280.690@0.0.1280.690" timestamp="1602926198319" />
+    <state x="452" y="265" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1602954809004">
       <screen x="0" y="0" width="1280" height="690" />
     </state>
-    <state x="452" y="265" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.690@0.0.1280.690" timestamp="1602889954447" />
-    <state x="297" y="153" key="run.anything.popup" timestamp="1602859221847">
+    <state x="452" y="265" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.690@0.0.1280.690" timestamp="1602954809004" />
+    <state x="297" y="153" key="run.anything.popup" timestamp="1602952300239">
       <screen x="0" y="0" width="1280" height="690" />
     </state>
-    <state x="297" y="153" key="run.anything.popup/0.0.1280.690@0.0.1280.690" timestamp="1602859221847" />
+    <state x="297" y="153" key="run.anything.popup/0.0.1280.690@0.0.1280.690" timestamp="1602952300239" />
     <state x="303" y="11" width="672" height="678" key="search.everywhere.popup" timestamp="1602545614765">
       <screen x="0" y="0" width="1280" height="690" />
     </state>
