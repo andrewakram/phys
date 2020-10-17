@@ -23,6 +23,12 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        ///////////////////
+        $this->app->bind(
+            'App\Http\Controllers\Interfaces\IndexRepositoryInterface',
+            'App\Http\Controllers\Eloquent\IndexRepository'
+        );
+        ///////////////////
         //user
         $this->app->bind(
           'App\Http\Controllers\Interfaces\User\AuthRepositoryInterface',

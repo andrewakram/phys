@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-         'jwt', 'active', 'name', 'phone', 'password','image'
+         'jwt', 'active', 'name', 'phone', 'password','image','group_id'
     ];
 
     /**
@@ -37,6 +37,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function group(){
+        return $this->belongsTo(Group::class,'group_id');
+    }
 
 //    protected  $primaryKey = 'jwt';
 //    public $incrementing = false;
