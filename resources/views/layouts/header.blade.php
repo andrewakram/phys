@@ -333,6 +333,9 @@
                             <li>
                                 <a href="{{route('exams')}}" ><i class="mdi mdi-airplane"></i>الامتحانات</a>
                             </li>
+                            <li>
+                                <a href="{{route('questions')}}" ><i class="mdi mdi-airplane"></i>الاسئلة</a>
+                            </li>
 
                         </ul>
                         <!-- End navigation menu -->

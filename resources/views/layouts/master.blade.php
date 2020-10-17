@@ -11,7 +11,7 @@
         @include('layouts.head')
     </head>
 
-    <body dir="rtl" style="text-align: right">
+    <body dir="rtl" style="text-align: right; overflow-y: scroll" >
     <!-- Loader -->
     <div id="preloader"><div id="status"><div class="spinner"></div></div></div>
 

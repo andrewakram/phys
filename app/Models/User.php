@@ -58,7 +58,7 @@ class User extends Authenticatable
     public function setImageAttribute($value)
     {
         $img_name = time().uniqid().'.'.$value->getClientOriginalExtension();
-        $value->move(public_path('/public/users/images/'),$img_name);
+        $value->move(public_path('/uploads/users/'),$img_name);
         $this->attributes['image'] = $img_name ;
     }
 
@@ -66,9 +66,9 @@ class User extends Authenticatable
     {
         if($value)
         {
-            return asset('public/public/users/images/'.$value);
+            return asset('/uploads/users/'.$value);
         }else{
-            return asset('public/public/users/images/default.png');
+            return asset('/default.png');
         }
     }
 

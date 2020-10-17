@@ -32,7 +32,7 @@ class IndexRepository implements IndexRepositoryInterface
 
     public function create($model,$request){
         $class="\\App\\Models\\".$model;
-        $class::create($request);
+        return $class::create($request);
     }
 
     public function update($model,$request,$id){
