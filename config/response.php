@@ -94,7 +94,7 @@ return
             ],
         'success' =>
             [
-                'ar' => 'تمت العملية بنجاح',
+                'ar' => '  تمت العملية بنجاح ياصاحبي',
                 'en' => 'Done Successfully',
             ],
         'send' =>
