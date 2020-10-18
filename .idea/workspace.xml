@@ -3,23 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="694e53ef-0359-44cb-8de1-feb7c78e0354" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Eloquent/IndexRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Eloquent/IndexRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2016_10_12_000000_create_questions_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2016_10_12_000000_create_questions_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2017_10_12_000000_create_answers_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2017_10_12_000000_create_answers_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ExamController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ExamController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/GroupController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/GroupController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Exam.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Exam.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Group.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Group.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/exams/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/exams/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/groups/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/groups/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/header.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/master.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/tables-responsive.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/tables-responsive.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources2/js/app.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources2/js/bootstrap.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources2/js/components/ExampleComponent.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources2/lang/en/auth.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources2/lang/en/pagination.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources2/lang/en/passwords.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources2/lang/en/validation.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources2/sass/_variables.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources2/sass/app.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources2/views/welcome.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/questions/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/questions/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -173,7 +164,7 @@
       <workItem from="1602607131564" duration="4692000" />
       <workItem from="1602709240307" duration="5690000" />
       <workItem from="1602841441414" duration="33136000" />
-      <workItem from="1602926199886" duration="22220000" />
+      <workItem from="1602926199886" duration="37104000" />
     </task>
     <servers />
   </component>

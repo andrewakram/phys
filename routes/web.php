@@ -56,5 +56,11 @@ Route::group(['prefix' => '/admin', 'namespace' => 'Admin'], function () {
             Route::post('/edit', 'QuestionController@update')->name('editQuestion');
             Route::post('/delete', 'QuestionController@delete')->name('deleteQuestion');
         });
+        Route::group(['prefix' => 'groups_exams'], function () {
+            Route::get('/', 'GroupExamController@index')->name('groups_exams');
+            Route::post('/add', 'GroupExamController@store')->name('addGroupExam');
+            Route::post('/edit', 'GroupExamController@update')->name('editGroupExam');
+            Route::post('/delete', 'GroupExamController@delete')->name('deleteGroupExam');
+        });
     });
 });

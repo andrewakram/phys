@@ -30,6 +30,10 @@ class Group extends Model
         return $this->belongsTo(Stage::class,'stage_id');
     }
 
+    public function users(){
+        return $this->hasMany(User::class,'group_id');
+    }
+
     public function setGroupNumAttribute()
     {
         $this->attributes['group_num'] = rand(100,999) .' - '. Str::random(3) ;

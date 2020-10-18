@@ -20,7 +20,7 @@ class ExamController extends Controller
 
     public function index()
     {
-        $results = $this->indexRepository->index('Exam')->paginate(20);
+        $results = $this->indexRepository->index('Exam')->with('questions')->paginate(20);
         $stages = $this->indexRepository->index('Stage')->get();
         return view('exams.index', compact('results', 'stages'));
     }

@@ -336,6 +336,9 @@
                             <li>
                                 <a href="{{route('questions')}}" ><i class="mdi mdi-airplane"></i>الاسئلة</a>
                             </li>
+                            <li>
+                                <a href="{{route('groups_exams')}}" ><i class="mdi mdi-airplane"></i>اختبارات المجموعات</a>
+                            </li>
 
                         </ul>
                         <!-- End navigation menu -->

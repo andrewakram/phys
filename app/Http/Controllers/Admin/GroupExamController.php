@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
-class GroupController extends Controller
+class GroupExamController extends Controller
 {
     protected $indexRepository;
 
@@ -20,9 +20,10 @@ class GroupController extends Controller
 
     public function index()
     {
-        $results = $this->indexRepository->index('Group')->with('users')->with('stage')->paginate(20);
-        $stages = $this->indexRepository->index('Stage')->get();
-        return view('groups.index', compact('results', 'stages'));
+        $results = $this->indexRepository->index('GroupExam')->with('exam')->with('group')->paginate(20);
+        $groups = $this->indexRepository->index('Group')->get();
+        $exams = $this->indexRepository->index('Exam')->get();
+        return view('groups_exams.index', compact('results', 'groups','exams'));
     }
 
     public function create()
@@ -46,7 +47,7 @@ class GroupController extends Controller
     public function update(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|unique:groups,name,' . "$request->model_id",
+            'name' => 'required|unique:groups_exams,name,' . "$request->model_id",
         ]);
         $this->indexRepository
             ->update("Group", $request->except('_token','model_id'), $request->model_id);
