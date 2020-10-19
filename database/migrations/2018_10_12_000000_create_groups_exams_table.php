@@ -17,8 +17,8 @@ class CreateGroupsExamsTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('exam_id')->unsigned();
             $table->bigInteger('group_id')->unsigned();
-            $table->string('start');
-            $table->string('end');
+            $table->timestamp('start');
+            $table->timestamp('end');
             $table->softDeletes();
             $table->timestamps();
 

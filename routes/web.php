@@ -31,6 +31,7 @@ Route::group(['prefix' => '/admin', 'namespace' => 'Admin'], function () {
             Route::post('/add', 'UserController@store')->name('addUser');
             Route::post('/edit', 'UserController@update')->name('editUser');
             Route::post('/delete', 'UserController@delete')->name('deleteUser');
+            Route::post('/change-status', 'UserController@changeStatus')->name('changeStatusUser');
         });
         Route::group(['prefix' => 'stages'], function () {
             Route::get('/', 'StageController@index')->name('stages');
@@ -55,6 +56,12 @@ Route::group(['prefix' => '/admin', 'namespace' => 'Admin'], function () {
             Route::post('/add', 'QuestionController@store')->name('addQuestion');
             Route::post('/edit', 'QuestionController@update')->name('editQuestion');
             Route::post('/delete', 'QuestionController@delete')->name('deleteQuestion');
+        });
+        Route::group(['prefix' => 'groups_exams'], function () {
+            Route::get('/', 'GroupExamController@index')->name('groups_exams');
+            Route::post('/add', 'GroupExamController@store')->name('addGroupExam');
+            Route::post('/edit', 'GroupExamController@update')->name('editGroupExam');
+            Route::post('/delete', 'GroupExamController@delete')->name('deleteGroupExam');
         });
     });
 });

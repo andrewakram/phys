@@ -42,6 +42,11 @@ class User extends Authenticatable
         return $this->belongsTo(Group::class,'group_id');
     }
 
+    public function exams_passed(){
+        return $this->hasMany(UserExamResult::class,'user_id');
+    }
+
+
 //    protected  $primaryKey = 'jwt';
 //    public $incrementing = false;
 

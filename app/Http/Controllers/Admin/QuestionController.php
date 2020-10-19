@@ -54,11 +54,9 @@ class QuestionController extends Controller
 
     public function update(Request $request)
     {
-        $this->validate($request, [
-            'name' => 'required|unique:questions,name,' . "$request->model_id",
-        ]);
+        $q= $request->except('_token', 'model_id','answer','is_true','trueValue');
         $this->indexRepository
-            ->update("Question", $request->except('_token', 'model_id'), $request->model_id);
+            ->update("Question", $q, $request->model_id);
         return back()->with('success', 'تمت العملية بنجاح');
 
     }

@@ -20,7 +20,7 @@ class GroupController extends Controller
 
     public function index()
     {
-        $results = $this->indexRepository->index('Group')->with('stage')->paginate(20);
+        $results = $this->indexRepository->index('Group')->with('users')->with('stage')->paginate(20);
         $stages = $this->indexRepository->index('Stage')->get();
         return view('groups.index', compact('results', 'stages'));
     }

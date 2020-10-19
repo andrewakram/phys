@@ -10,7 +10,7 @@
     <!-- Page-Title -->
     <div class="row">
         <div class="col-sm-12">
-            <div class="page-title-box" >
+            <div class="page-title-box">
                 <div class="btn-group pull-left">
                     <ol class="breadcrumb hide-phone p-0 m-0">
                         <li class="breadcrumb-item"><a href="{{route('dashboard')}}">الرئيسية</a></li>
@@ -30,12 +30,12 @@
 @endsection
 
 @section('content')
-    <div class="row" >
+    <div class="row">
 
 
         <div class="col-lg-12">
             <div class="card m-b-20">
-                <div class="card-body" >
+                <div class="card-body">
 
                     <h4 class="mt-0 header-title">الاسئلة
 
@@ -47,209 +47,305 @@
                     <div class="table-rep-plugin">
                         <div class="table-responsive b-0" data-pattern="priority-columns">
                             <table id="tech-companies-1" class="table  table-bordered">
-                            <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>العنوان</th>
-                            <th>الوصف</th>
-                            <th>الصورة</th>
-                            <th>الاجابات</th>
-                            <th>الامتحان</th>
-                            <th>العمليات</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($results as $result)
-                            <tr>
-                                <th scope="row">{{$result->id}}</th>
-                                <td>{{$result->title}}</td>
-                                <td>{{$result->description}}</td>
-                                <td>
-                                    @if($result->image !== null)
-                                        <button title="عرض" type="button" class="btn btn-success p-0" data-toggle="modal"
-                                                data-target="#image{{$result->id}}">
-                                            <img src="{{$result->image}}"
-                                                 style="width: 50px; height: 50px;margin-top: 0px"/>
-                                        </button>
-                                        {{--==image==--}}
-                                        <div class="modal fade" id="image{{$result->id}}" tabindex="-1" role="dialog"
-                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog" role="document">
-                                                <div class="modal-content">
-                                                    <img src="{{$result->image}}"/>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        {{--==image==--}}
-                                    @else
-                                        <b> - </b>
-                                    @endif
-                                </td>
-                                <td>
-                                    @if($result->answers)
-
-                                        <button title="عرض الاجابات" type="button" class="btn btn-success" data-toggle="modal" data-target="#answer{{$result->id}}">
-                                            <i class="fa fa-eye"></i>
-                                        </button>
-                                        {{--==image==--}}
-                                        <div class="modal fade" id="answer{{$result->id}}" tabindex="-1" role="dialog"
-                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog" role="document">
-                                                <div class="modal-content p-2 mr-2">
-                                                    @foreach($result->answers as $answer)
-                                                        <span>#</span> <b
-                                                            class="{{$answer->is_true == 1 ? 'badge badge-success' : ''}}">{{$answer->answer}}</b>
-                                                        <br>
-                                                        <span></span> <b
-                                                            class="{{$answer->is_true == 1 ? 'badge badge-success' : ''}}">
-                                                            ( {{$answer->description}} ) </b> <hr>
-                                                    @endforeach
-                                                </div>
-                                            </div>
-                                        </div>
-                                        {{--==image==--}}
-
-{{--                                        @foreach($result->answers as $answer)--}}
-{{--                                            <span>#</span> <b--}}
-{{--                                                class="{{$answer->is_true == 1 ? 'badge badge-success' : ''}}">{{$answer->answer}}</b>--}}
-{{--                                            <br>--}}
-{{--                                            <span></span> <b--}}
-{{--                                                class="{{$answer->is_true == 1 ? 'badge badge-success' : ''}}">--}}
-{{--                                                ( {{$answer->description}} ) </b> <hr>--}}
-{{--                                        @endforeach--}}
-                                    @else
-                                        <b> - </b>
-                                    @endif
-                                </td>
-                                <td>
-                                    @if($result->exam)
-                                        <span>#: </span> <b>{{$result->exam->id}}</b> <br>
-                                        <span>اسم الامتحان: </span> <b>{{$result->exam->name}}</b> <br>
-                                        {{--                                        {{$result->group->exam_id}}--}}
-                                    @else
-                                        <b> - </b>
-                                    @endif
-                                </td>
-                                <td>
-                                    <button title="تعديل" type="button" class="btn btn-warning" data-toggle="modal"
-                                            data-target="#edit_{{$result->id}}">
-                                        <i class="fa fa-edit"></i>
-                                    </button>
-                                    <button title="حذف" type="button" class="btn btn-danger" data-toggle="modal"
-                                            data-target="#delete_{{$result->id}}">
-                                        <i class="fa fa-trash"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            <div class="modal fade" id="edit_{{$result->id}}" tabindex="-1" role="dialog"
-                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-lg" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">تعديل بيانات السؤال</h5>
-                                            {{--                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">--}}
-                                            {{--                                                <span aria-hidden="true">&times;</span>--}}
-                                            {{--                                            </button>--}}
-                                        </div>
-                                        <form class="form-horizontal" method="post" action="{{route('editQuestion')}}"
-                                              enctype="multipart/form-data">
-                                            {{csrf_field()}}
-                                            <div class="modal-body">
-                                                <input type="hidden" name="model_id" value="{{$result->id}}">
-
-
-                                                <div class="form-group row">
-                                                    <label class="col-lg-12 control-label text-lg-right"
-                                                           for="textinput">العنوان </label>
-                                                    <div class="col-lg-12">
-                                                        <input id="name" name="title" type="text"
-                                                               value="{{$result->title}}" placeholder="العنوان "
-                                                               class="form-control btn-square">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>العنوان</th>
+                                    <th>الوصف</th>
+                                    <th>الصورة</th>
+                                    <th>الاجابات</th>
+                                    <th>الامتحان</th>
+                                    <th>العمليات</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($results as $result)
+                                    <tr>
+                                        <th scope="row">{{$result->id}}</th>
+                                        <td>{{$result->title}}</td>
+                                        <td>{{$result->description}}</td>
+                                        <td>
+                                            @if($result->image !== null)
+                                                <button title="عرض" type="button" class="btn btn-success p-0"
+                                                        data-toggle="modal"
+                                                        data-target="#image{{$result->id}}">
+                                                    <img src="{{$result->image}}"
+                                                         style="width: 50px; height: 50px;margin-top: 0px"/>
+                                                </button>
+                                                {{--==image==--}}
+                                                <div class="modal fade" id="image{{$result->id}}" tabindex="-1"
+                                                     role="dialog"
+                                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <img src="{{$result->image}}"/>
+                                                        </div>
                                                     </div>
                                                 </div>
+                                                {{--==image==--}}
+                                            @else
+                                                <b> - </b>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if($result->answers)
 
-                                                <div class="form-group row">
-                                                    <label class="col-lg-12 control-label text-lg-right"
-                                                           for="textinput">الوصف </label>
-                                                    <div class="col-lg-12">
+                                                <button title="عرض الاجابات" type="button" class="btn btn-primary"
+                                                        data-toggle="modal" data-target="#answer{{$result->id}}">
+                                                    <i class="fa fa-eye"></i>
+                                                </button>
+                                                {{--==answer==--}}
+                                                <div class="modal fade" id="answer{{$result->id}}" tabindex="-1"
+                                                     role="dialog"
+                                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog modal-lg" role="document">
+
+                                                        <div class="modal-content p-3">
+
+                                                            <div class="modal-header " style="display: block;">
+                                                                <div class="row modal-title">
+                                                                    <div class="col-lg-12">
+                                                                        <h3>{{isset($result->title) ? $result->title : ""}} </h3>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-lg-12">
+                                                                        <b>{{isset($result->description) ? $result->description : ""}}</b>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-lg-12">
+                                                                        <h3>؟</h3>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <hr class=" ">
+                                                            {{--                                                            <div class="clearfix" >--}}
+                                                            {{--                                                                <hr class=" ">--}}
+                                                            {{--                                                            </div>--}}
+                                                            @foreach($result->answers as $answer)
+                                                                <b class="p-2 badge badge-{{$answer->is_true == 1 ? 'success' : 'danger'}}">{{$answer->answer}}</b>
+                                                                <br>
+                                                                @if($answer->description)
+                                                                    <b class="{{$answer->is_true == 1 ? 'p-2 badge badge-success' : ''}}">
+                                                                        ( {{$answer->description}} ) </b>
+                                                                @endif
+                                                                {{--                                                                <div class="clearfix" style="margin-bottom: 5px  ">--}}
+                                                                {{--                                                                    <hr class=" p-3 mr-3">--}}
+                                                                {{--                                                                </div>--}}
+
+                                                            @endforeach
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {{--==answer==--}}
+
+                                                {{--                                        @foreach($result->answers as $answer)--}}
+                                                {{--                                            <span>#</span> <b--}}
+                                                {{--                                                class="{{$answer->is_true == 1 ? 'badge badge-success' : ''}}">{{$answer->answer}}</b>--}}
+                                                {{--                                            <br>--}}
+                                                {{--                                            <span></span> <b--}}
+                                                {{--                                                class="{{$answer->is_true == 1 ? 'badge badge-success' : ''}}">--}}
+                                                {{--                                                ( {{$answer->description}} ) </b> <hr>--}}
+                                                {{--                                        @endforeach--}}
+                                            @else
+                                                <b> - </b>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if($result->exam)
+                                                <span>#: </span> <b>{{$result->exam->id}}</b> <br>
+                                                <span>اسم الامتحان: </span> <b>{{$result->exam->name}}</b> <br>
+                                                {{--                                        {{$result->group->exam_id}}--}}
+                                            @else
+                                                <b> - </b>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <button title="تعديل" type="button" class="btn btn-warning"
+                                                    data-toggle="modal"
+                                                    data-target="#edit_{{$result->id}}">
+                                                <i class="fa fa-edit"></i>
+                                            </button>
+                                            <button title="حذف" type="button" class="btn btn-danger" data-toggle="modal"
+                                                    data-target="#delete_{{$result->id}}">
+                                                <i class="fa fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <div class="modal fade" id="edit_{{$result->id}}" tabindex="-1" role="dialog"
+                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">تعديل بيانات
+                                                        السؤال</h5>
+                                                    {{--                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">--}}
+                                                    {{--                                                <span aria-hidden="true">&times;</span>--}}
+                                                    {{--                                            </button>--}}
+                                                </div>i
+                                                <form class="form-horizontal" method="post"
+                                                      action="{{route('editQuestion')}}"
+                                                      enctype="multipart/form-data">
+                                                    {{csrf_field()}}
+                                                    <div class="modal-body">
+                                                        <input type="hidden" name="model_id" value="{{$result->id}}">
+
+
+                                                        <div class="form-group row">
+                                                            <label class="col-lg-12 control-label text-lg-right"
+                                                                   for="textinput">العنوان </label>
+                                                            <div class="col-lg-12">
+                                                                <input id="name" name="title" type="text"
+                                                                       value="{{$result->title}}" placeholder="العنوان "
+                                                                       class="form-control btn-square">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group row">
+                                                            <label class="col-lg-12 control-label text-lg-right"
+                                                                   for="textinput">الوصف </label>
+                                                            <div class="col-lg-12">
                                                         <textarea name="description" id="description"
                                                                   class="form-control btn-square">{{$result->description}}</textarea>
-                                                    </div>
-                                                </div>
+                                                            </div>
+                                                        </div>
 
-                                                <div class="form-group row ">
-                                                    <label class="col-lg-12 control-label ">تحميل صورة</label>
-                                                    <div class="col-lg-12">
-                                                        <input id="inputImage" type="file" name="image"
-                                                               accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff">
-                                                    </div>
-                                                </div>
-                                                <img src="{{$result->image}}" class="image_radius"><br>
+                                                        <div class="form-group row ">
+                                                            <div class="col-lg-5">
+                                                                <label class="col-lg-12 control-label ">تحميل
+                                                                    صورة</label>
+                                                                <div class="col-lg-12">
+                                                                    <input id="inputImage" type="file" name="image"
+                                                                           accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-7">
+                                                                <div class="form-group row \">
+                                                                    <img src="{{$result->image}}" class="image_radius"
+                                                                         style="width:400px;height:200px;">
+                                                                </div>
+                                                            </div>
+                                                        </div>
 
-                                                <div class="form-group row">
-                                                    <label class="col-lg-12 control-label text-lg-right"
-                                                           for="textinput">الامتحانات</label>
-                                                    <div class="col-lg-12">
-                                                        <select name="exam_id" class="btn form-control b-light digits"
-                                                                required
-                                                                oninvalid="this.setCustomValidity('هذا الحقل مطلوب ادخاله')">
-                                                            <option value="" disabled>اختر الامتحان</option>
-                                                            @foreach($exams as $exam)
-                                                                <option
-                                                                    value="{{$exam->id}}" {{$exam->id == $result->exam->id ? "selected" : ""}}>{{$exam->name}}</option>
-                                                            @endforeach
-                                                        </select>
-                                                        <div class="invalid-feedback">هذا الحقل مطلوب ادخاله .</div>
+{{--                                                        <div class="form-group row ">--}}
+{{--                                                            <div class="col-lg-12">--}}
+{{--                                                                <button type="button" class="addAnswer btn btn-success">--}}
+{{--                                                                    <i class="icon-plus"></i>--}}
+{{--                                                                    اضافة اجابة--}}
+{{--                                                                </button>--}}
+{{--                                                            </div>--}}
+{{--                                                        </div>--}}
+                                                        <div class="form-group row ">
+                                                            <div class="col-lg-12">
+                                                                <button type="button" class=" btn btn-success" disabled>
+                                                                    <i class="icon-plus"></i>
+                                                                    الاجابات
+                                                                </button>
+                                                            </div>
+                                                        </div>
+
+
+                                                        <span class="answers">
+                                                            <input type="hidden" name="trueValue" class="trueValue">
+                            {{--//////////       append answers from jquery here        //////////--}}
+                                                        @foreach($result->answers as $answer)
+                                                            <div class="row itemAnswer">
+                                                                <div class=" col-md-12">
+                                                                    <div class="form-group row check">
+                                                                        <input name="answer[]" type="text" readonly
+                                                                               class="col-md-9 form-control btn-square answer"
+                                                                               value="{{$answer->answer}}">
+                                                                        <input name="is_true[]" type="radio" readonly
+                                                                               {{$answer->is_true == 1 ? 'checked' : '' }} class="col-md-3 form-control btn-square is_check"
+                                                                               value="1">
+{{--                                                                        <button type="button"--}}
+{{--                                                                                class="col-md-2 removeAnswer btn btn-danger">--}}
+{{--                                                                            <i class="icon-plus"></i>--}}
+{{--                                                                            حذف--}}
+{{--                                                                        </button>--}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        @endforeach
+                                                        </span>
+
+
+
+
+                                                        <br>
+
+                                                        <div class="form-group row">
+                                                            <label class="col-lg-12 control-label text-lg-right"
+                                                                   for="textinput">الامتحانات</label>
+                                                            <div class="col-lg-12">
+                                                                <select name="exam_id"
+                                                                        class="btn form-control b-light digits"
+                                                                        required
+                                                                        oninvalid="this.setCustomValidity('هذا الحقل مطلوب ادخاله')">
+                                                                    <option value="" disabled>اختر الامتحان</option>
+                                                                    @foreach($exams as $exam)
+                                                                        <option
+                                                                            value="{{$exam->id}}" {{$exam->id == $result->exam->id ? "selected" : ""}}>{{$exam->name}}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                                <div class="invalid-feedback">هذا الحقل مطلوب ادخاله .
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
+
+                                                    <div class="modal-footer">
+                                                        <button type="reset" class="btn btn-dark mr-1"
+                                                                data-dismiss="modal">
+                                                            اغلاق
+                                                        </button>
+                                                        <button class="btn btn-primary mr-1" type="submit">تعديل
+                                                        </button>
+                                                    </div>
+                                                </form>
                                             </div>
-
-                                            <div class="modal-footer">
-                                                <button type="reset" class="btn btn-dark mr-1" data-dismiss="modal">
-                                                    اغلاق
-                                                </button>
-                                                <button class="btn btn-primary mr-1" type="submit">تعديل</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                            {{--///////////////////////////--}}
-                            <div class="modal animated fadeIn" id="delete_{{$result->id}}" tabindex="-1" role="dialog"
-                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header btn-danger">
-                                            <h5 class="modal-title" id="exampleModalLabel">حذف السؤال</h5>
-                                            {{--                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">--}}
-                                            {{--                                                <span aria-hidden="true">&times;</span>--}}
-                                            {{--                                            </button>--}}
                                         </div>
-                                        <form method="post" action="{{route('deleteQuestion')}}" class="buttons">
-                                            {{csrf_field()}}
-                                            <div class="modal-body">
-                                                <h4>هل انت متأكد ؟</h4>
-                                                <h6>
-                                                    انت علي وشك حذف السؤال
-                                                    <br>رقم السؤال: ({{$result->id}})
-                                                    <br>تابع للامتحان: ({{$result->exam->exam_num}}
-                                                    / {{$result->exam->name}})
-
-                                                </h6>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <input type="hidden" name="model_id" value="{{$result->id}}">
-                                                <button class="btn btn-dark" type="button" data-dismiss="modal">اغلاق
-                                                </button>
-                                                <button type="submit" class="btn btn-primary">تأكيد</button>
-                                            </div>
-                                        </form>
                                     </div>
-                                </div>
-                            </div>
-                        @endforeach
-                        </tbody>
-                    </table>
+                                    {{--///////////////////////////--}}
+                                    <div class="modal animated fadeIn" id="delete_{{$result->id}}" tabindex="-1"
+                                         role="dialog"
+                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header btn-danger">
+                                                    <h5 class="modal-title" id="exampleModalLabel">حذف السؤال</h5>
+                                                    {{--                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">--}}
+                                                    {{--                                                <span aria-hidden="true">&times;</span>--}}
+                                                    {{--                                            </button>--}}
+                                                </div>
+                                                <form method="post" action="{{route('deleteQuestion')}}"
+                                                      class="buttons">
+                                                    {{csrf_field()}}
+                                                    <div class="modal-body">
+                                                        <h4>هل انت متأكد ؟</h4>
+                                                        <h6>
+                                                            انت علي وشك حذف السؤال
+                                                            <br>رقم السؤال: ({{$result->id}})
+                                                            <br>تابع للامتحان: ({{$result->exam->exam_num}}
+                                                            / {{$result->exam->name}})
+
+                                                        </h6>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <input type="hidden" name="model_id" value="{{$result->id}}">
+                                                        <button class="btn btn-dark" type="button" data-dismiss="modal">
+                                                            اغلاق
+                                                        </button>
+                                                        <button type="submit" class="btn btn-primary">تأكيد</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                                </tbody>
+                            </table>
                         </div>
                     </div>
 
@@ -314,26 +410,26 @@
                             </div>
                         </div>
                         <span class="answers">
-                            <input type="hidden" name="trueValue" id="trueValue">
+                            <input type="hidden" name="trueValue" class="trueValue">
                             {{--//////////       append answers from jquery here        //////////--}}
                         </span>
-{{--                        <div class="form-group row " style="display: inline-block">--}}
-{{--                            <div class="col-lg-12">--}}
-{{--                                <div class="col-md-2">--}}
-{{--                                    <input name="is_true[]" type="checkbox" class="form-control btn-square" value="1">--}}
-{{--                                </div>--}}
-{{--                                <div class="col-md-8">--}}
-{{--                                    <input name="answer[]" type="text" class="form-control btn-square answer">--}}
-{{--                                </div>--}}
-{{--                                <div class="col-md-2">--}}
-{{--                                    <button type="button" class="removeAnswer btn btn-danger">--}}
-{{--                                        <i class="icon-plus"></i>--}}
-{{--                                        حذف--}}
-{{--                                    </button>--}}
-{{--                                </div>--}}
+                        {{--                        <div class="form-group row " style="display: inline-block">--}}
+                        {{--                            <div class="col-lg-12">--}}
+                        {{--                                <div class="col-md-2">--}}
+                        {{--                                    <input name="is_true[]" type="checkbox" class="form-control btn-square" value="1">--}}
+                        {{--                                </div>--}}
+                        {{--                                <div class="col-md-8">--}}
+                        {{--                                    <input name="answer[]" type="text" class="form-control btn-square answer">--}}
+                        {{--                                </div>--}}
+                        {{--                                <div class="col-md-2">--}}
+                        {{--                                    <button type="button" class="removeAnswer btn btn-danger">--}}
+                        {{--                                        <i class="icon-plus"></i>--}}
+                        {{--                                        حذف--}}
+                        {{--                                    </button>--}}
+                        {{--                                </div>--}}
 
-{{--                            </div>--}}
-{{--                        </div>--}}
+                        {{--                            </div>--}}
+                        {{--                        </div>--}}
 
                         <div class="form-group row">
                             <label class="col-lg-12 control-label text-lg-right"
@@ -394,9 +490,21 @@
         });
         $(document).on('click', '.is_check', function () {
             //alert($(this).closest('.check').find('input[type=text]').val());
-            $("#trueValue").val($(this).closest('.check').find('input[type=text]').val());
+            $(".trueValue").val($(this).closest('.check').find('input[type=text]').val());
         });
     </script>
 
 @endsection
 
+{{--<div class="row itemAnswer">--}}
+{{--    <div class=" col-md-12">--}}
+{{--        <div class="form-group row check">--}}
+{{--            <input name="answer[]" type="text" class="col-md-7 form-control btn-square answer" value="ج">--}}
+{{--            <input name="is_true[]" type="radio" class="col-md-3 form-control btn-square is_check" value="1">--}}
+{{--            <button type="button" class="col-md-2 removeAnswer btn btn-danger">--}}
+{{--                <i class="icon-plus"></i>--}}
+{{--حذف--}}
+{{--            </button>--}}
+{{--        </div>--}}
+{{--    </div>--}}
+{{--</div>--}}

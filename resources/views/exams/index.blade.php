@@ -1,13 +1,15 @@
 @extends('layouts.master')
 
 @section('css')
+    <link href="{{ URL::asset('assets/plugins/RWD-Table-Patterns/dist/css/rwd-table.min.css') }}" rel="stylesheet"
+          type="text/css" media="screen">
 @endsection
 
 @section('breadcrumb')
     <!-- Page-Title -->
     <div class="row">
         <div class="col-sm-12">
-            <div class="page-title-box" style="display: inline">
+            <div class="page-title-box">
                 <div class="btn-group pull-left">
                     <ol class="breadcrumb hide-phone p-0 m-0">
                         <li class="breadcrumb-item"><a href="{{route('dashboard')}}">الرئيسية</a></li>
@@ -41,155 +43,203 @@
                     {{--                        borders on all sides of the table and cells.--}}
                     {{--                    </p>--}}
 
-                    <table class="table table-bordered">
-                        <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>رقم الامتحان</th>
-                            <th>الاسم</th>
-                            <th>المدة بالدقائق</th>
-                            <th>الدرجة</th>
-                            <th>المرحلة الدراسية</th>
-                            <th>العمليات</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($results as $result)
-                            <tr>
-                                <th scope="row">{{$result->id}}</th>
-                                <td>{{$result->exam_num}}</td>
-                                <td>{{$result->name}}</td>
-                                <td>{{$result->duration}}</td>
-                                <td>{{$result->degree}}</td>
+                    <div class="table-rep-plugin">
+                        <div class="table-responsive b-0" data-pattern="priority-columns">
+                            <table id="tech-companies-1" class="table  table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>رقم الامتحان</th>
+                                    <th>الاسم</th>
+                                    <th>المدة بالدقائق</th>
+                                    <th>الدرجة</th>
+                                    <th>المرحلة الدراسية</th>
+                                    <th>عدد الاسئلة</th>
+                                    <th>العمليات</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($results as $result)
+                                    <tr>
+                                        <th scope="row">{{$result->id}}</th>
+                                        <td>{{$result->exam_num}}</td>
+                                        <td>{{$result->name}}</td>
+                                        <td>{{$result->duration}}</td>
+                                        <td>{{$result->degree}}</td>
 
-                                <td>
-                                    @if($result->stage)
-                                        <span>#: </span> <b>{{$result->stage->id}}</b> <br>
-                                        <span>اسم المرحلة: </span> <b>{{$result->stage->name}}</b> <br>
-                                        {{--                                        {{$result->group->stage_id}}--}}
-                                    @else
-                                        -
-                                    @endif
-                                </td>
-                                <td>
-                                    <button title="تعديل" type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit_{{$result->id}}">
-                                        <i class="fa fa-edit"></i>
-                                    </button>
-                                    <button title="حذف" type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete_{{$result->id}}">
-                                        <i class="fa fa-trash"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            <div class="modal fade" id="edit_{{$result->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">تعديل بيانات الامتحان</h5>
-{{--                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">--}}
-{{--                                                <span aria-hidden="true">&times;</span>--}}
-{{--                                            </button>--}}
+                                        <td>
+                                            @if($result->stage)
+                                                <span>#: </span> <b>{{$result->stage->id}}</b> <br>
+                                                <span>اسم المرحلة: </span> <b>{{$result->stage->name}}</b> <br>
+                                                {{--                                        {{$result->group->stage_id}}--}}
+                                            @else
+                                                -
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if($result->questions)
+                                                <b>{{sizeof($result->questions)}}</b>
+                                            @else
+                                                <b>0</b>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <button title="تعديل" type="button" class="btn btn-warning"
+                                                    data-toggle="modal" data-target="#edit_{{$result->id}}">
+                                                <i class="fa fa-edit"></i>
+                                            </button>
+                                            <button title="حذف" type="button" class="btn btn-danger" data-toggle="modal"
+                                                    data-target="#delete_{{$result->id}}">
+                                                <i class="fa fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <div class="modal fade" id="edit_{{$result->id}}" tabindex="-1" role="dialog"
+                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">تعديل بيانات
+                                                        الامتحان</h5>
+                                                    {{--                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">--}}
+                                                    {{--                                                <span aria-hidden="true">&times;</span>--}}
+                                                    {{--                                            </button>--}}
+                                                </div>
+                                                <form class="form-horizontal" method="post"
+                                                      action="{{route('editExam')}}" enctype="multipart/form-data">
+                                                    {{csrf_field()}}
+                                                    <div class="modal-body">
+                                                        <input type="hidden" name="model_id" value="{{$result->id}}">
+
+
+                                                        <div class="form-group row">
+                                                            <label class="col-lg-12 control-label text-lg-right"
+                                                                   for="textinput">الاسم </label>
+                                                            <div class="col-lg-12">
+                                                                <input id="name" name="name" type="text"
+                                                                       value="{{$result->name}}" placeholder="الاسم "
+                                                                       class="form-control btn-square" required
+                                                                       oninvalid="this.setCustomValidity('هذا الحقل مطلوب ادخاله')">
+                                                                <div class="invalid-feedback">هذا الحقل مطلوب ادخاله .
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group row">
+                                                            <label class="col-lg-12 control-label text-lg-right"
+                                                                   for="textinput">المدة بالدقائق </label>
+                                                            <div class="col-lg-12">
+                                                                <input id="name" name="duration" type="text"
+                                                                       value="{{$result->duration}}"
+                                                                       placeholder="المدة بالدقائق "
+                                                                       class="form-control btn-square" required
+                                                                       oninvalid="this.setCustomValidity('هذا الحقل مطلوب ادخاله')">
+                                                                <div class="invalid-feedback">هذا الحقل مطلوب ادخاله .
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group row">
+                                                            <label class="col-lg-12 control-label text-lg-right"
+                                                                   for="textinput"> الدرجة </label>
+                                                            <div class="col-lg-12">
+                                                                <input id="name" name="degree" type="text"
+                                                                       value="{{$result->degree}}"
+                                                                       placeholder=" الدرجة "
+                                                                       class="form-control btn-square" required
+                                                                       oninvalid="this.setCustomValidity('هذا الحقل مطلوب ادخاله')">
+                                                                <div class="invalid-feedback">هذا الحقل مطلوب ادخاله .
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group row">
+                                                            <label class="col-lg-12 control-label text-lg-right"
+                                                                   for="textinput">المراحل الدراسية</label>
+                                                            <div class="col-lg-12">
+                                                                <select name="stage_id"
+                                                                        class="btn form-control b-light digits" required
+                                                                        oninvalid="this.setCustomValidity('هذا الحقل مطلوب ادخاله')">
+                                                                    <option value="" disabled>اختر المرحلة الدراسية
+                                                                    </option>
+                                                                    @foreach($stages as $stage)
+                                                                        <option
+                                                                            value="{{$stage->id}}" {{$stage->id == $result->stage->id ? "selected" : ""}}>{{$stage->name}}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                                <div class="invalid-feedback">هذا الحقل مطلوب ادخاله .
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="modal-footer">
+                                                        <button type="reset" class="btn btn-dark mr-1"
+                                                                data-dismiss="modal">اغلاق
+                                                        </button>
+                                                        <button class="btn btn-primary mr-1" type="submit">تعديل
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            </div>
                                         </div>
-                                        <form class="form-horizontal" method="post" action="{{route('editExam')}}" enctype="multipart/form-data">
-                                            {{csrf_field()}}
-                                            <div class="modal-body">
-                                                <input type="hidden" name="model_id" value="{{$result->id}}">
-
-
-                                                <div class="form-group row">
-                                                    <label class="col-lg-12 control-label text-lg-right" for="textinput">الاسم </label>
-                                                    <div class="col-lg-12">
-                                                        <input id="name" name="name" type="text" value="{{$result->name}}" placeholder="الاسم " class="form-control btn-square" required oninvalid="this.setCustomValidity('هذا الحقل مطلوب ادخاله')">
-                                                        <div class="invalid-feedback">هذا الحقل مطلوب ادخاله .</div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group row">
-                                                    <label class="col-lg-12 control-label text-lg-right" for="textinput">المدة بالدقائق </label>
-                                                    <div class="col-lg-12">
-                                                        <input id="name" name="duration" type="text" value="{{$result->duration}}" placeholder="المدة بالدقائق " class="form-control btn-square" required oninvalid="this.setCustomValidity('هذا الحقل مطلوب ادخاله')">
-                                                        <div class="invalid-feedback">هذا الحقل مطلوب ادخاله .</div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group row">
-                                                    <label class="col-lg-12 control-label text-lg-right" for="textinput"> الدرجة </label>
-                                                    <div class="col-lg-12">
-                                                        <input id="name" name="degree" type="text" value="{{$result->degree}}" placeholder=" الدرجة " class="form-control btn-square" required oninvalid="this.setCustomValidity('هذا الحقل مطلوب ادخاله')">
-                                                        <div class="invalid-feedback">هذا الحقل مطلوب ادخاله .</div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group row">
-                                                    <label class="col-lg-12 control-label text-lg-right" for="textinput">المراحل الدراسية</label>
-                                                    <div class="col-lg-12">
-                                                        <select name="stage_id" class="btn form-control b-light digits" required oninvalid="this.setCustomValidity('هذا الحقل مطلوب ادخاله')" >
-                                                            <option value="" disabled>اختر المرحلة الدراسية</option>
-                                                            @foreach($stages as $stage)
-                                                                <option value="{{$stage->id}}" {{$stage->id == $result->stage->id ? "selected" : ""}}>{{$stage->name}}</option>
-                                                            @endforeach
-                                                        </select>
-                                                        <div class="invalid-feedback">هذا الحقل مطلوب ادخاله .</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="modal-footer">
-                                                <button type="reset" class="btn btn-dark mr-1" data-dismiss="modal">اغلاق</button>
-                                                <button class="btn btn-primary mr-1" type="submit">تعديل</button>
-                                            </div>
-                                        </form>
                                     </div>
-                                </div>
-                            </div>
-                            {{--///////////////////////////--}}
-                            <div class="modal animated fadeIn" id="delete_{{$result->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header btn-danger">
-                                            <h5 class="modal-title" id="exampleModalLabel">حذف الامتحان</h5>
-{{--                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">--}}
-{{--                                                <span aria-hidden="true">&times;</span>--}}
-{{--                                            </button>--}}
+                                    {{--///////////////////////////--}}
+                                    <div class="modal animated fadeIn" id="delete_{{$result->id}}" tabindex="-1"
+                                         role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header btn-danger">
+                                                    <h5 class="modal-title" id="exampleModalLabel">حذف الامتحان</h5>
+                                                    {{--                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">--}}
+                                                    {{--                                                <span aria-hidden="true">&times;</span>--}}
+                                                    {{--                                            </button>--}}
+                                                </div>
+                                                <form method="post" action="{{route('deleteExam')}}" class="buttons">
+                                                    {{csrf_field()}}
+                                                    <div class="modal-body">
+                                                        <h4>هل انت متأكد ؟</h4>
+                                                        <h6>
+                                                            انت علي وشك حذف الامتحان
+                                                            <br>رقم الامتحان: ({{$result->group_num}})
+                                                            <br>الاسم: ({{$result->name}})
+
+                                                        </h6>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <input type="hidden" name="model_id" value="{{$result->id}}">
+                                                        <button class="btn btn-dark" type="button" data-dismiss="modal">
+                                                            اغلاق
+                                                        </button>
+                                                        <button type="submit" class="btn btn-primary">تأكيد</button>
+                                                    </div>
+                                                </form>
+                                            </div>
                                         </div>
-                                        <form method="post" action="{{route('deleteExam')}}" class="buttons">
-                                            {{csrf_field()}}
-                                            <div class="modal-body">
-                                                <h4>هل انت متأكد ؟</h4>
-                                                <h6>
-                                                    انت علي وشك حذف الامتحان
-                                                    <br>رقم الامتحان: ({{$result->group_num}})
-                                                    <br>الاسم: ({{$result->name}})
-
-                                                </h6>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <input type="hidden" name="model_id" value="{{$result->id}}">
-                                                <button class="btn btn-dark" type="button" data-dismiss="modal">اغلاق</button>
-                                                <button type="submit" class="btn btn-primary">تأكيد</button>
-                                            </div>
-                                        </form>
                                     </div>
-                                </div>
-                            </div>
-                        @endforeach
-                        </tbody>
-                    </table>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
 
                 </div>
             </div>
         </div> <!-- end col -->
     </div> <!-- end row -->
 
-    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">اضافة امتحان</h5>
-{{--                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="float: left">--}}
-{{--                        <span aria-hidden="true">&times;</span>--}}
-{{--                    </button>--}}
+                    {{--                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="float: left">--}}
+                    {{--                        <span aria-hidden="true">&times;</span>--}}
+                    {{--                    </button>--}}
                 </div>
-                <form class="form-horizontal needs-validation was-validated" method="post" action="{{route('addExam')}}" enctype="multipart/form-data">
+                <form class="form-horizontal needs-validation was-validated" method="post" action="{{route('addExam')}}"
+                      enctype="multipart/form-data">
                     {{csrf_field()}}
                     <div class="modal-body">
 
@@ -197,7 +247,9 @@
                         <div class="form-group row">
                             <label class="col-lg-12 control-label text-lg-right" for="textinput">الاسم </label>
                             <div class="col-lg-12">
-                                <input id="name" name="name" type="text" placeholder="الاسم " class="form-control btn-square" required oninvalid="this.setCustomValidity('هذا الحقل مطلوب ادخاله')">
+                                <input id="name" name="name" type="text" placeholder="الاسم "
+                                       class="form-control btn-square" required
+                                       oninvalid="this.setCustomValidity('هذا الحقل مطلوب ادخاله')">
                                 <div class="invalid-feedback">هذا الحقل مطلوب ادخاله .</div>
                             </div>
                         </div>
@@ -205,7 +257,9 @@
                         <div class="form-group row">
                             <label class="col-lg-12 control-label text-lg-right" for="textinput">المدة بالدقائق </label>
                             <div class="col-lg-12">
-                                <input id="name" name="duration" type="text" placeholder="المدة بالدقائق " class="form-control btn-square" required oninvalid="this.setCustomValidity('هذا الحقل مطلوب ادخاله')">
+                                <input id="name" name="duration" type="text" placeholder="المدة بالدقائق "
+                                       class="form-control btn-square" required
+                                       oninvalid="this.setCustomValidity('هذا الحقل مطلوب ادخاله')">
                                 <div class="invalid-feedback">هذا الحقل مطلوب ادخاله .</div>
                             </div>
                         </div>
@@ -213,15 +267,19 @@
                         <div class="form-group row">
                             <label class="col-lg-12 control-label text-lg-right" for="textinput"> الدرجة </label>
                             <div class="col-lg-12">
-                                <input id="name" name="degree" type="text" placeholder=" الدرجة " class="form-control btn-square" required oninvalid="this.setCustomValidity('هذا الحقل مطلوب ادخاله')">
+                                <input id="name" name="degree" type="text" placeholder=" الدرجة "
+                                       class="form-control btn-square" required
+                                       oninvalid="this.setCustomValidity('هذا الحقل مطلوب ادخاله')">
                                 <div class="invalid-feedback">هذا الحقل مطلوب ادخاله .</div>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-lg-12 control-label text-lg-right" for="textinput">المراحل الدراسية</label>
+                            <label class="col-lg-12 control-label text-lg-right" for="textinput">المراحل
+                                الدراسية</label>
                             <div class="col-lg-12">
-                                <select name="stage_id" class="btn form-control b-light digits" required oninvalid="this.setCustomValidity('هذا الحقل مطلوب ادخاله')" >
+                                <select name="stage_id" class="btn form-control b-light digits" required
+                                        oninvalid="this.setCustomValidity('هذا الحقل مطلوب ادخاله')">
                                     <option value="" selected disabled>اختر المرحلة الدراسية</option>
                                     @foreach($stages as $stage)
                                         <option value="{{$stage->id}}">{{$stage->name}}</option>
