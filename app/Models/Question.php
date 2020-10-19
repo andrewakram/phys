@@ -51,5 +51,4 @@ class Question extends Model
         }
     }
 
-
 }

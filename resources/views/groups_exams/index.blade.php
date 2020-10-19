@@ -102,16 +102,23 @@
 {{--                                                <span aria-hidden="true">&times;</span>--}}
 {{--                                            </button>--}}
                                         </div>
-                                        <form class="form-horizontal" method="post" action="{{route('editGroup')}}" enctype="multipart/form-data">
+                                        <form class="form-horizontal" method="post" action="{{route('editGroupExam')}}" enctype="multipart/form-data">
                                             {{csrf_field()}}
                                             <div class="modal-body">
                                                 <input type="hidden" name="model_id" value="{{$result->id}}">
 
-
-                                                <div class="form-group row">
-                                                    <label class="col-lg-12 control-label text-lg-right" for="textinput">الاسم </label>
+                                                <div class="form-group">
+                                                    <label class="col-lg-12 control-label">وقت البدء</label>
                                                     <div class="col-lg-12">
-                                                        <input id="name" name="name" type="text" value="{{$result->name}}" placeholder="الاسم " class="form-control btn-square" required oninvalid="this.setCustomValidity('هذا الحقل مطلوب ادخاله')">
+                                                        <input type="datetime-local" class="form-control" name="start" value="{{$result->start}}" required oninvalid="this.setCustomValidity('هذا الحقل مطلوب ادخاله')" />
+                                                        <div class="invalid-feedback">هذا الحقل مطلوب ادخاله .</div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="col-lg-12 control-label">وقت الانتهاء</label>
+                                                    <div class="col-lg-12">
+                                                        <input type="datetime-local" class="form-control" name="end" value="{{$result->end}}" required oninvalid="this.setCustomValidity('هذا الحقل مطلوب ادخاله')" />
                                                         <div class="invalid-feedback">هذا الحقل مطلوب ادخاله .</div>
                                                     </div>
                                                 </div>
@@ -122,7 +129,7 @@
                                                         <select name="group_id" class="btn form-control b-light digits" required oninvalid="this.setCustomValidity('هذا الحقل مطلوب ادخاله')" >
                                                             <option value="" disabled>اختر المجموعة </option>
                                                             @foreach($groups as $group)
-                                                                <option value="{{$group->id}}" {{$group->id == $result->stage->id ? "selected" : ""}}>{{$group->name}} / {{$group->group_num}}</option>
+                                                                <option value="{{$group->id}}" {{$group->id == $result->group->id ? "selected" : ""}}>{{$group->name}} / {{$group->group_num}}</option>
                                                             @endforeach
                                                         </select>
                                                         <div class="invalid-feedback">هذا الحقل مطلوب ادخاله .</div>
@@ -131,7 +138,7 @@
                                                 <div class="form-group row">
                                                     <label class="col-lg-12 control-label text-lg-right" for="textinput">الامتحانات</label>
                                                     <div class="col-lg-12">
-                                                        <select name="group_id" class="btn form-control b-light digits" required oninvalid="this.setCustomValidity('هذا الحقل مطلوب ادخاله')" >
+                                                        <select name="exam_id" class="btn form-control b-light digits" required oninvalid="this.setCustomValidity('هذا الحقل مطلوب ادخاله')" >
                                                             <option value="" selected disabled>اختر الامتحان</option>
                                                             @foreach($exams as $exam)
                                                                 <option value="{{$exam->id}}" {{$exam->id == $result->exam->id ? "selected" : ""}}>{{$exam->name}} / {{$exam->exam_num}}</option>
@@ -160,14 +167,14 @@
 {{--                                                <span aria-hidden="true">&times;</span>--}}
 {{--                                            </button>--}}
                                         </div>
-                                        <form method="post" action="{{route('deleteGroup')}}" class="buttons">
+                                        <form method="post" action="{{route('deleteGroupExam')}}" class="buttons">
                                             {{csrf_field()}}
                                             <div class="modal-body">
                                                 <h4>هل انت متأكد ؟</h4>
                                                 <h6>
                                                     انت علي وشك حذف الاختبار لمجموعة
-                                                    <br>رقم الاختبار لمجموعة: ({{$result->group_num}})
-                                                    <br>الاسم: ({{$result->name}})
+{{--                                                    <br>رقم الاختبار لمجموعة: ({{$result->group_num}})--}}
+{{--                                                    <br>الاسم: ({{$result->name}})--}}
 
                                                 </h6>
                                             </div>
@@ -198,21 +205,28 @@
 {{--                        <span aria-hidden="true">&times;</span>--}}
 {{--                    </button>--}}
                 </div>
-                <form class="form-horizontal needs-validation was-validated" method="post" action="{{route('addGroup')}}" enctype="multipart/form-data">
+                <form class="form-horizontal needs-validation was-validated" method="post" action="{{route('addGroupExam')}}" enctype="multipart/form-data">
                     {{csrf_field()}}
                     <div class="modal-body">
 
-
-                        <div class="form-group row">
-                            <label class="col-lg-12 control-label text-lg-right" for="textinput">الاسم </label>
+                        <div class="form-group">
+                            <label class="col-lg-12 control-label">وقت البدء</label>
                             <div class="col-lg-12">
-                                <input id="name" name="name" type="text" placeholder="الاسم " class="form-control btn-square" required oninvalid="this.setCustomValidity('هذا الحقل مطلوب ادخاله')">
+                                <input type="datetime-local" class="form-control" name="start" required oninvalid="this.setCustomValidity('هذا الحقل مطلوب ادخاله')" />
+                                <div class="invalid-feedback">هذا الحقل مطلوب ادخاله .</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-lg-12 control-label">وقت الانتهاء</label>
+                            <div class="col-lg-12">
+                                <input type="datetime-local" class="form-control" name="end" required oninvalid="this.setCustomValidity('هذا الحقل مطلوب ادخاله')" />
                                 <div class="invalid-feedback">هذا الحقل مطلوب ادخاله .</div>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-lg-12 control-label text-lg-right" for="textinput">المحموعات</label>
+                            <label class="col-lg-12 control-label text-lg-right" for="textinput">المجموعات</label>
                             <div class="col-lg-12">
                                 <select name="group_id" class="btn form-control b-light digits" required oninvalid="this.setCustomValidity('هذا الحقل مطلوب ادخاله')" >
                                     <option value="" selected disabled>اختر المجموعة</option>
@@ -227,7 +241,7 @@
                         <div class="form-group row">
                             <label class="col-lg-12 control-label text-lg-right" for="textinput">الامتحانات</label>
                             <div class="col-lg-12">
-                                <select name="group_id" class="btn form-control b-light digits" required oninvalid="this.setCustomValidity('هذا الحقل مطلوب ادخاله')" >
+                                <select name="exam_id" class="btn form-control b-light digits" required oninvalid="this.setCustomValidity('هذا الحقل مطلوب ادخاله')" >
                                     <option value="" selected disabled>اختر الامتحان</option>
                                     @foreach($exams as $exam)
                                         <option value="{{$exam->id}}">{{$exam->name}} / {{$exam->exam_num}}</option>

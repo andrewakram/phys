@@ -133,13 +133,14 @@
                         <!-- Navigation Menu-->
                         <ul class="navigation-menu">
 
-                            <li class="has-submenu">
-                                <a href="#"><i class="mdi mdi-view-dashboard"></i>Dashboard</a>
-                                <ul class="submenu">
-                                    <li><a href="index">Dashboard 1</a></li>
-                                    <li><a href="dashboard-2">Dashboard 2</a></li>
-                                </ul>
-                            </li>
+{{--                            <li class="has-submenu">--}}
+{{--                                <a href="#"><i class="mdi mdi-view-dashboard"></i>Dashboard</a>--}}
+{{--                                <ul class="submenu">--}}
+{{--                                    <li><a href="index">Dashboard 1</a></li>--}}
+{{--                                    <li><a href="dashboard-2">Dashboard 2</a></li>--}}
+{{--                                </ul>--}}
+{{--                            </li>--}}
+
 
 {{--                            <li class="has-submenu">--}}
 {{--                                <a href="#"><i class="mdi mdi-buffer"></i>UI Kit</a>--}}
@@ -321,6 +322,10 @@
 {{--                            <li>--}}
 {{--                                <a href="#" target="_blank"><i class="mdi mdi-airplane"></i>Front End</a>--}}
 {{--                            </li>--}}
+
+                            <li>
+                                <a href="{{route('dashboard')}}" ><i class="mdi mdi-view-dashboard"></i> الرئيسية</a>
+                            </li>
                             <li>
                                 <a href="{{route('users')}}" ><i class="mdi mdi-airplane"></i>الطلاب</a>
                             </li>

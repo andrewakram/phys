@@ -73,11 +73,8 @@ class UserController extends Controller
             'user_id' => 'required|exists:users,id'
         ]);
 
-        $user = $this->userRepository->changStatus($request->user_id);
-        if ($user == 'suspend')
-            return back()->with('success', 'User suspended successfully');
-        else
-            return back()->with('success', 'User activated successfully');
+        $this->indexRepository->changStatus("User",$request->user_id);
+        //return back()->with('success', 'تمت العملية بنجاح');
     }
 
     public function search(Request $request)

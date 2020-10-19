@@ -27,6 +27,10 @@ class UserExamResult extends Model
         'deleted_at', 'updated_at'
     ];
 
+    public function exam($exam_id){
+        return Exam::whereId($exam_id)->first();
+    }
+
 //    public function exam(){
 //        return $this->belongsTo(Exam::class,'exam_id');
 //    }

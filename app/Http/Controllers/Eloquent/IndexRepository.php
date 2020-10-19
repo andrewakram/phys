@@ -37,7 +37,8 @@ class IndexRepository implements IndexRepositoryInterface
 
     public function update($model,$request,$id){
         $class="\\App\\Models\\".$model;
-        $class::whereId($id)->update($request);
+        $obj = $class::whereId($id)->first();
+        $obj->update($request);
     }
 
     public function delete($model,$id){
@@ -51,6 +52,17 @@ class IndexRepository implements IndexRepositoryInterface
         if($check)
             return true;
         return false;
+    }
+
+    public function changStatus($model,$id)
+    {
+        $class="\\App\\Models\\".$model;
+        $obj = $class::whereId($id)->select('id','active')->first();
+        if($obj->active == 1)
+            $obj->active=0;
+        else
+            $obj->active=1;
+        $obj->save();
     }
 
 }

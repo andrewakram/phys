@@ -3,22 +3,28 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Eloquent\Admin\HomeRepository;
+use App\Http\Controllers\Interfaces\IndexRepositoryInterface;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
 
 class HomeController extends Controller
 {
-    protected $homeRepository;
-    public function __construct(HomeRepository $homeRepository)
+    protected $indexRepository;
+
+    public function __construct(IndexRepositoryInterface $indexRepository)
     {
-        $this->homeRepository = $homeRepository;
+        $this->indexRepository = $indexRepository;
     }
 
     public function dashboard()
     {
+        $users= $this->indexRepository->index('User')->count();
+        $questions= $this->indexRepository->index('Question')->count();
+        $groups= $this->indexRepository->index('Group')->count();
+        $exams= $this->indexRepository->index('Exam')->count();
 
-        return view('index');
+        return view('index',compact('users','groups','exams','questions'));
 //        $dashboard = $this->homeRepository->dashboard();
 //        $users_charts = DB::SELECT("select id, count(*) as count,
 //            date(created_at) as date from users

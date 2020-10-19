@@ -31,6 +31,7 @@ Route::group(['prefix' => '/admin', 'namespace' => 'Admin'], function () {
             Route::post('/add', 'UserController@store')->name('addUser');
             Route::post('/edit', 'UserController@update')->name('editUser');
             Route::post('/delete', 'UserController@delete')->name('deleteUser');
+            Route::post('/change-status', 'UserController@changeStatus')->name('changeStatusUser');
         });
         Route::group(['prefix' => 'stages'], function () {
             Route::get('/', 'StageController@index')->name('stages');

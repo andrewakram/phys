@@ -94,7 +94,7 @@
                                                         data-toggle="modal" data-target="#answer{{$result->id}}">
                                                     <i class="fa fa-eye"></i>
                                                 </button>
-                                                {{--==image==--}}
+                                                {{--==answer==--}}
                                                 <div class="modal fade" id="answer{{$result->id}}" tabindex="-1"
                                                      role="dialog"
                                                      aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -138,7 +138,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                {{--==image==--}}
+                                                {{--==answer==--}}
 
                                                 {{--                                        @foreach($result->answers as $answer)--}}
                                                 {{--                                            <span>#</span> <b--}}
@@ -183,7 +183,7 @@
                                                     {{--                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">--}}
                                                     {{--                                                <span aria-hidden="true">&times;</span>--}}
                                                     {{--                                            </button>--}}
-                                                </div>
+                                                </div>i
                                                 <form class="form-horizontal" method="post"
                                                       action="{{route('editQuestion')}}"
                                                       enctype="multipart/form-data">
@@ -228,11 +228,19 @@
                                                             </div>
                                                         </div>
 
+{{--                                                        <div class="form-group row ">--}}
+{{--                                                            <div class="col-lg-12">--}}
+{{--                                                                <button type="button" class="addAnswer btn btn-success">--}}
+{{--                                                                    <i class="icon-plus"></i>--}}
+{{--                                                                    اضافة اجابة--}}
+{{--                                                                </button>--}}
+{{--                                                            </div>--}}
+{{--                                                        </div>--}}
                                                         <div class="form-group row ">
                                                             <div class="col-lg-12">
-                                                                <button type="button" class="addAnswer btn btn-success">
+                                                                <button type="button" class=" btn btn-success" disabled>
                                                                     <i class="icon-plus"></i>
-                                                                    اضافة اجابة
+                                                                    الاجابات
                                                                 </button>
                                                             </div>
                                                         </div>
@@ -245,17 +253,17 @@
                                                             <div class="row itemAnswer">
                                                                 <div class=" col-md-12">
                                                                     <div class="form-group row check">
-                                                                        <input name="answer[]" type="text"
-                                                                               class="col-md-7 form-control btn-square answer"
+                                                                        <input name="answer[]" type="text" readonly
+                                                                               class="col-md-9 form-control btn-square answer"
                                                                                value="{{$answer->answer}}">
-                                                                        <input name="is_true[]" type="radio"
+                                                                        <input name="is_true[]" type="radio" readonly
                                                                                {{$answer->is_true == 1 ? 'checked' : '' }} class="col-md-3 form-control btn-square is_check"
                                                                                value="1">
-                                                                        <button type="button"
-                                                                                class="col-md-2 removeAnswer btn btn-danger">
-                                                                            <i class="icon-plus"></i>
-                                                                            حذف
-                                                                        </button>
+{{--                                                                        <button type="button"--}}
+{{--                                                                                class="col-md-2 removeAnswer btn btn-danger">--}}
+{{--                                                                            <i class="icon-plus"></i>--}}
+{{--                                                                            حذف--}}
+{{--                                                                        </button>--}}
                                                                     </div>
                                                                 </div>
                                                             </div>
