@@ -2,37 +2,97 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="694e53ef-0359-44cb-8de1-feb7c78e0354" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AboutController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AlbumController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/BenfitController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CategoryController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CityController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ComplainSuggestController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ContactusController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CountryController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/MembershipController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/NewsletterController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/NotificationController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/OfferController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/OrderController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PartenerController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/QuestionController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ReportController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ReviewController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ServiceController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/SliderController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/TeamController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/TermController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/User2Controller.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/VisionController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/WorkerController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public2/.htaccess" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public2/css/app.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public2/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public2/index.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public2/js/app.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public2/robots.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public2/web.config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/calendar.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/charts-c3.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/charts-chartist.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/charts-chartjs.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/charts-flot.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/charts-morris.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/charts-other.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/charts-peity.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/charts-sparkline.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard-2.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/ecommerce-customers.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/ecommerce-order-history.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/ecommerce-product-edit.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/ecommerce-product-grid.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/ecommerce-product-list.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/email-compose.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/email-inbox.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/email-read.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/email-templates-alert.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/email-templates-basic.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/email-templates-billing.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/form-advanced.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/form-editors.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/form-elements.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/form-mask.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/form-summernote.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/form-uploads.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/form-validation.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/form-wizard.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/form-xeditable.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/icons-dripicons.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/icons-fontawesome.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/icons-ion.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/icons-material.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/icons-mobirise.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/icons-themify.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/icons-typicons.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/icons-weather.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/maps-google.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/maps-vector.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages-404.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages-500.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages-blank.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages-coming-soon.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages-contact.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages-directory.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages-faq.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages-gallery.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages-invoice.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages-lock-screen-2.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages-lock-screen.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages-login-2.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages-login.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages-maintenance.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages-pricing.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages-recoverpw-2.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages-recoverpw.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages-register-2.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages-register.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages-timeline.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/tables-basic.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/tables-datatable.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/tables-editable.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/tables-responsive.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/ui-alertify.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/ui-alerts.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/ui-animation.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/ui-badge.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/ui-buttons.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/ui-cards.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/ui-carousel.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/ui-colors.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/ui-dropdowns.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/ui-grid.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/ui-highlight.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/ui-images.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/ui-lightbox.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/ui-modals.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/ui-navs.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/ui-nestable.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/ui-pagination.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/ui-popover-tooltips.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/ui-progressbars.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/ui-rangeslider.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/ui-rating.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/ui-sessiontimeout.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/ui-sweet-alert.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/ui-tabs-accordions.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/ui-typography.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/ui-video.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/widgets.blade.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -189,7 +249,7 @@
       <workItem from="1603051886415" duration="15338000" />
       <workItem from="1603069360485" duration="153000" />
       <workItem from="1603094786331" duration="620000" />
-      <workItem from="1603215228999" duration="6820000" />
+      <workItem from="1603215228999" duration="7074000" />
     </task>
     <servers />
   </component>
