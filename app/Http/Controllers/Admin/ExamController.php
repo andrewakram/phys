@@ -59,6 +59,15 @@ class ExamController extends Controller
         return back()->with('success', 'تمت العملية بنجاح');
     }
 
+    public function searchExams(Request $request)
+    {
+        $results = $this->indexRepository->index('Exam')
+            ->where('stage_id',$request->stage_id)
+            ->with('questions')->paginate(20);
+        $stages = $this->indexRepository->index('Stage')->get();
+        return view('exams.index', compact('results', 'stages'));
+    }
+
     public function show($id)
     {
         $user = $this->userRepository->profile($id);

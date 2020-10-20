@@ -20,6 +20,25 @@
                         اضافة طالب
                     </button>
                 </h4>
+                <form method="post" action="{{route('searchUsers')}}" enctype="multipart/form-data">
+                    @csrf
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <select name="group_id" class="btn btn-default border-dark form-control b-light digits">
+                                <option value="" selected disabled>اختر المجموعة </option>
+                                @foreach($groups as $group)
+                                    <option value="{{$group->id}}">{{$group->name}} / {{$group->group_num}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-lg-6">
+                            <button type="submit" class="btn btn-success col-lg-6" >
+                                بحث
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                <br>
             </div>
         </div>
     </div>
@@ -294,7 +313,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">اضافة دولة</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">اضافة طالب</h5>
                     {{--                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="float: left">--}}
                     {{--                        <span aria-hidden="true">&times;</span>--}}
                     {{--                    </button>--}}

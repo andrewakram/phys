@@ -23,6 +23,25 @@
                         اضافة سؤال
                     </button>
                 </h4>
+                <form method="post" action="{{route('searchQuestions')}}" enctype="multipart/form-data">
+                    @csrf
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <select name="exam_id" class="btn btn-default border-dark form-control b-light digits">
+                                <option value="" selected disabled>اختر الامتحان </option>
+                                @foreach($exams as $exam)
+                                    <option
+                                        value="{{$exam->id}}">{{$exam->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-lg-6">
+                            <button type="submit" class="btn btn-success col-lg-6" >
+                                بحث
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -253,10 +272,10 @@
                                                             <div class="row itemAnswer">
                                                                 <div class=" col-md-12">
                                                                     <div class="form-group row check">
-                                                                        <input name="answer[]" type="text" readonly
+                                                                        <input name="answer[]" type="text" disabled
                                                                                class="col-md-9 form-control btn-square answer"
                                                                                value="{{$answer->answer}}">
-                                                                        <input name="is_true[]" type="radio" readonly
+                                                                        <input name="is_true[]" type="radio" disabled
                                                                                {{$answer->is_true == 1 ? 'checked' : '' }} class="col-md-3 form-control btn-square is_check"
                                                                                value="1">
 {{--                                                                        <button type="button"--}}

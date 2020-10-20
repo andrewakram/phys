@@ -77,10 +77,12 @@ class UserController extends Controller
         //return back()->with('success', 'تمت العملية بنجاح');
     }
 
-    public function search(Request $request)
+    public function searchUsers(Request $request)
     {
-        $users = $this->userRepository->search($request);
-        $type = '';
-        return view('admin.users.index', compact('users', 'type'));
+        $results = $this->indexRepository->index('User')
+            ->where('group_id',$request->group_id)
+            ->with('group')->paginate(20);
+        $groups = $this->indexRepository->index('Group')->get();
+        return view('users.index', compact('results', 'groups'));
     }
 }

@@ -67,4 +67,20 @@ class QuestionController extends Controller
         return back()->with('success', 'تمت العملية بنجاح');
     }
 
+    public function searchQuestions(Request $request)
+    {
+        $results = $this->indexRepository
+            ->index('Question')
+            ->orderBy('id','desc')
+            ->where('exam_id',$request->exam_id)
+            ->with('exam')
+            ->with('answers')
+            ->paginate(20);
+        $exams = $this->indexRepository
+            ->index('Exam')
+            ->with('stage')
+            ->get();
+        return view('questions.index', compact('results', 'exams'));
+    }
+
 }

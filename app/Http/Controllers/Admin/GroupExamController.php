@@ -56,4 +56,18 @@ class GroupExamController extends Controller
         return back()->with('success', 'تمت العملية بنجاح');
     }
 
+    public function searchGroupExams(Request $request)
+    {
+        $results = $this->indexRepository->index('GroupExam')
+            ->where('group_id',$request->group_id)
+            ->with('exam')
+            ->with('group')
+            ->paginate(20);
+        $groups = $this->indexRepository->index('Group')->get();
+        $exams = $this->indexRepository->index('Exam')->get();
+        return view('groups_exams.index', compact('results', 'groups', 'exams'));
+    }
+
+
+
 }

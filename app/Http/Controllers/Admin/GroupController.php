@@ -60,4 +60,15 @@ class GroupController extends Controller
         return back()->with('success', 'تمت العملية بنجاح');
     }
 
+    public function searchGroups(Request $request)
+    {
+        $results = $this->indexRepository->index('Group')
+            ->where('stage_id',$request->stage_id)
+            ->with('users')
+            ->with('stage')
+            ->paginate(20);
+        $stages = $this->indexRepository->index('Stage')->get();
+        return view('groups.index', compact('results', 'stages'));
+    }
+
 }

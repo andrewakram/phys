@@ -12,7 +12,7 @@
 
                 <div class="p-3">
                     <h4 class="text-muted font-18 m-b-5 text-center">Welcome Back !</h4>
-                    <p class="text-muted text-center">Sign in to continue to Admiria.</p>
+                    <p class="text-muted text-center">Sign in to continue to Admin.</p>
 
                     <form  class="form-horizontal m-t-30" action="{{route('login')}}" method="post">
                         {{csrf_field()}}
