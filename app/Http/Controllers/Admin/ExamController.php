@@ -20,8 +20,8 @@ class ExamController extends Controller
 
     public function index()
     {
-        $results = $this->indexRepository->index('Exam')->with('questions')->paginate(20);
-        $stages = $this->indexRepository->index('Stage')->get();
+        $results = $this->indexRepository->index('Exam')->where('deleted',0)->with('questions')->paginate(20);
+        $stages = $this->indexRepository->index('Stage')->where('deleted',0)->get();
         return view('exams.index', compact('results', 'stages'));
     }
 
@@ -49,19 +49,20 @@ class ExamController extends Controller
         ]);
         $this->indexRepository
             ->update("Exam", $request->except('_token','model_id'), $request->model_id);
-        return back()->with('success', 'تمت العملية بنجاح');
+        return redirect(route('questions'))->with('success', 'تمت العملية بنجاح');
 
     }
 
     public function delete(Request $request)
     {
         $this->indexRepository->delete("Exam",$request->model_id);
-        return back()->with('success', 'تمت العملية بنجاح');
+        return redirect(route('questions'))->with('success', 'تمت العملية بنجاح');
     }
 
     public function searchExams(Request $request)
     {
         $results = $this->indexRepository->index('Exam')
+            ->where('deleted',0)
             ->where('stage_id',$request->stage_id)
             ->with('questions')->paginate(20);
         $stages = $this->indexRepository->index('Stage')->get();

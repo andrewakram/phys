@@ -14,7 +14,7 @@
                         <li class="breadcrumb-item active">المراحل الدراسية</li>
                     </ol>
                 </div>
-                <h4 class="page-title p-2">المراحل الدراسية
+                <h4 class="p-2">المراحل الدراسية
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal"><i
                             class="icon-plus"></i>
                         اضافة مرحلة دراسية
@@ -126,7 +126,7 @@
                             </div>
                         @endforeach
                         </tbody>
-                    </table>
+                    </table>{{$results->links()}}
 
                 </div>
             </div>

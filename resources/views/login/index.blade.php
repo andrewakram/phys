@@ -6,13 +6,13 @@
     <div class="wrapper-page">
         <div class="card">
             <div class="card-body">
-                <h3 class="text-center m-0">
-                    <a href="index" class="logo logo-admin"><img src="{{ URL::asset('assets/images/logo.png') }}" height="30" alt="logo"></a>
+                <h3 class="text-center">
+                    <a href="index" class="logo logo-admin"><img src="{{ URL::asset('assets/images/logo.png') }}" width="170" height="170" alt="logo"></a>
                 </h3>
 
-                <div class="p-3">
-                    <h4 class="text-muted font-18 m-b-5 text-center">Welcome Back !</h4>
-                    <p class="text-muted text-center">Sign in to continue to Admin.</p>
+                <div class="">
+                    <h4 class="text-muted   text-center">Welcome Back !</h4>
+                    <!--<p class="text-muted text-center">Sign in to continue to Admin.</p>-->
 
                     <form  class="form-horizontal m-t-30" action="{{route('login')}}" method="post">
                         {{csrf_field()}}

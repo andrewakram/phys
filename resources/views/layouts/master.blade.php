@@ -17,8 +17,11 @@
 
     <div id="wrapper">
         @include('layouts.header')
+        
         <div class="wrapper">
+            
             <div class="container-fluid">
+                @include('layouts.messages')
                 @yield('breadcrumb')
                 @yield('content')
             </div>

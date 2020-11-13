@@ -16,7 +16,7 @@
                         <li class="breadcrumb-item active">المجموعات</li>
                     </ol>
                 </div>
-                <h4 class="page-title p-2">المجموعات
+                <h4 class=" p-2">المجموعات
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal"><i
                             class="icon-plus"></i>
                         اضافة مجموعة
@@ -62,7 +62,9 @@
                     {{--                        borders on all sides of the table and cells.--}}
                     {{--                    </p>--}}
 
-                    <table class="table table-bordered">
+                    <div class="table-rep-plugin">
+                        <div class="table-responsive b-0" data-pattern="priority-columns">
+                            <table id="tech-companies-1" class="table  table-bordered">
                         <thead>
                         <tr>
                             <th>#</th>
@@ -183,7 +185,9 @@
                             </div>
                         @endforeach
                         </tbody>
-                    </table>
+                    </table>{{$results->links()}}
+                    </div>
+                    </div>
 
                 </div>
             </div>

@@ -19,10 +19,10 @@ class HomeController extends Controller
 
     public function dashboard()
     {
-        $users= $this->indexRepository->index('User')->count();
-        $questions= $this->indexRepository->index('Question')->count();
-        $groups= $this->indexRepository->index('Group')->count();
-        $exams= $this->indexRepository->index('Exam')->count();
+        $users= $this->indexRepository->index('User')->where('deleted',0)->count();
+        $questions= $this->indexRepository->index('Question')->where('deleted',0)->count();
+        $groups= $this->indexRepository->index('Group')->where('deleted',0)->count();
+        $exams= $this->indexRepository->index('Exam')->where('deleted',0)->count();
 
         return view('index',compact('users','groups','exams','questions'));
 //        $dashboard = $this->homeRepository->dashboard();

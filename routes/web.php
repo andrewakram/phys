@@ -11,9 +11,9 @@
 |
 */
 
-//Route::get('/', function () {
-//    return view('pages-login');
-//});
+Route::get('/', function () {
+    return "welcome";
+});
 //Auth::routes();
 
 Route::get('{any}', 'AdmiriaController@index');
@@ -32,7 +32,7 @@ Route::group(['prefix' => '/admin', 'namespace' => 'Admin'], function () {
             Route::post('/edit', 'UserController@update')->name('editUser');
             Route::post('/delete', 'UserController@delete')->name('deleteUser');
             Route::post('/change-status', 'UserController@changeStatus')->name('changeStatusUser');
-            Route::post('/search-users', 'UserController@searchUsers')->name('searchUsers');
+            Route::post('/', 'UserController@searchUsers')->name('searchUsers');
         });
         Route::group(['prefix' => 'stages'], function () {
             Route::get('/', 'StageController@index')->name('stages');
@@ -45,28 +45,28 @@ Route::group(['prefix' => '/admin', 'namespace' => 'Admin'], function () {
             Route::post('/add', 'GroupController@store')->name('addGroup');
             Route::post('/edit', 'GroupController@update')->name('editGroup');
             Route::post('/delete', 'GroupController@delete')->name('deleteGroup');
-            Route::post('/search-groups', 'GroupController@searchGroups')->name('searchGroups');
+            Route::post('/', 'GroupController@searchGroups')->name('searchGroups');
         });
         Route::group(['prefix' => 'exams'], function () {
             Route::get('/', 'ExamController@index')->name('exams');
             Route::post('/add', 'ExamController@store')->name('addExam');
             Route::post('/edit', 'ExamController@update')->name('editExam');
             Route::post('/delete', 'ExamController@delete')->name('deleteExam');
-            Route::post('/search-exams', 'ExamController@searchExams')->name('searchExams');
+            Route::post('/', 'ExamController@searchExams')->name('searchExams');
         });
         Route::group(['prefix' => 'questions'], function () {
             Route::get('/', 'QuestionController@index')->name('questions');
             Route::post('/add', 'QuestionController@store')->name('addQuestion');
             Route::post('/edit', 'QuestionController@update')->name('editQuestion');
             Route::post('/delete', 'QuestionController@delete')->name('deleteQuestion');
-            Route::post('/search-questions', 'QuestionController@searchQuestions')->name('searchQuestions');
+            Route::post('/', 'QuestionController@searchQuestions')->name('searchQuestions');
         });
         Route::group(['prefix' => 'groups_exams'], function () {
             Route::get('/', 'GroupExamController@index')->name('groups_exams');
             Route::post('/add', 'GroupExamController@store')->name('addGroupExam');
             Route::post('/edit', 'GroupExamController@update')->name('editGroupExam');
             Route::post('/delete', 'GroupExamController@delete')->name('deleteGroupExam');
-            Route::post('/search-groups_exams', 'GroupExamController@searchGroupExams')->name('searchGroupExams');
+            Route::post('/', 'GroupExamController@searchGroupExams')->name('searchGroupExams');
         });
     });
 });

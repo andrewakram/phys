@@ -17,7 +17,7 @@
                         <li class="breadcrumb-item active">الاسئلة</li>
                     </ol>
                 </div>
-                <h4 class="page-title p-2">الاسئلة
+                <h4 class=" p-2">الاسئلة
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal"><i
                             class="icon-plus"></i>
                         اضافة سؤال
@@ -364,7 +364,7 @@
                                     </div>
                                 @endforeach
                                 </tbody>
-                            </table>
+                            </table>{{$results->links()}}
                         </div>
                     </div>
 

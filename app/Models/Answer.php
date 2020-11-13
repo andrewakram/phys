@@ -20,7 +20,7 @@ class Answer extends Model
      * @var array
      */
     protected $fillable = [
-         'answer', 'description', 'image', 'is_true', 'question_id'
+         'answer', 'description', 'image', 'is_true', 'question_id','deleted'
     ];
 
     protected $hidden = [

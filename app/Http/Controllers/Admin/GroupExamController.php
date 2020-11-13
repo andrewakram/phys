@@ -20,9 +20,9 @@ class GroupExamController extends Controller
 
     public function index()
     {
-        $results = $this->indexRepository->index('GroupExam')->with('exam')->with('group')->paginate(20);
-        $groups = $this->indexRepository->index('Group')->get();
-        $exams = $this->indexRepository->index('Exam')->get();
+        $results = $this->indexRepository->index('GroupExam')->where('deleted',0)->with('exam')->with('group')->paginate(20);
+        $groups = $this->indexRepository->index('Group')->where('deleted',0)->get();
+        $exams = $this->indexRepository->index('Exam')->where('deleted',0)->get();
         return view('groups_exams.index', compact('results', 'groups', 'exams'));
     }
 
@@ -46,25 +46,26 @@ class GroupExamController extends Controller
 //        ]);
         $this->indexRepository
             ->update("GroupExam", $request->except('_token', 'model_id'), $request->model_id);
-        return back()->with('success', 'تمت العملية بنجاح');
+        return redirect(route('groups_exams'))->with('success', 'تمت العملية بنجاح');
 
     }
 
     public function delete(Request $request)
     {
         $this->indexRepository->delete("GroupExam", $request->model_id);
-        return back()->with('success', 'تمت العملية بنجاح');
+        return redirect(route('groups_exams'))->with('success', 'تمت العملية بنجاح');
     }
 
     public function searchGroupExams(Request $request)
     {
         $results = $this->indexRepository->index('GroupExam')
+            ->where('deleted',0)
             ->where('group_id',$request->group_id)
             ->with('exam')
             ->with('group')
             ->paginate(20);
-        $groups = $this->indexRepository->index('Group')->get();
-        $exams = $this->indexRepository->index('Exam')->get();
+        $groups = $this->indexRepository->index('Group')->where('deleted',0)->get();
+        $exams = $this->indexRepository->index('Exam')->where('deleted',0)->get();
         return view('groups_exams.index', compact('results', 'groups', 'exams'));
     }
 

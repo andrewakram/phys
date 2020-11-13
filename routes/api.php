@@ -21,6 +21,9 @@ Route::group(['prefix' => '/user'], function () {
     //Start apis authentication
     Route::post('/login', 'Api\User\AuthController@login');
     Route::post('/update_profile', 'Api\User\AuthController@updateProfile');
-    Route::post('/exams', 'Api\User\ExamsController@examData');
+    Route::get('/exams', 'Api\User\ExamsController@examData');
     Route::post('/examData', 'Api\User\ExamsController@examQuestions');
+    
+    Route::get('/my-exams', 'Api\User\ExamsController@myExams');
+    Route::post('/finish-exam', 'Api\User\ExamsController@finishExam');
 });

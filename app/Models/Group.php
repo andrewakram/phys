@@ -19,7 +19,7 @@ class Group extends Model
      * @var array
      */
     protected $fillable = [
-         'group_num', 'name', 'stage_id'
+         'group_num', 'name', 'stage_id','deleted'
     ];
 
     protected $hidden = [

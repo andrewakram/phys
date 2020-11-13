@@ -19,7 +19,7 @@ class Question extends Model
      * @var array
      */
     protected $fillable = [
-         'title', 'description', 'image', 'exam_id'
+         'title', 'description', 'image', 'exam_id','deleted'
     ];
 
     protected $hidden = [

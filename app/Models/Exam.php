@@ -19,7 +19,7 @@ class Exam extends Model
      * @var array
      */
     protected $fillable = [
-         'exam_num', 'name', 'duration', 'degree', 'stage_id'
+         'exam_num', 'name', 'duration', 'degree', 'stage_id','deleted'
     ];
 
     protected $hidden = [

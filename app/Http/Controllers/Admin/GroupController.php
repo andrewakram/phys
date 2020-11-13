@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+ 
 
 class GroupController extends Controller
 {
@@ -20,8 +21,8 @@ class GroupController extends Controller
 
     public function index()
     {
-        $results = $this->indexRepository->index('Group')->with('users')->with('stage')->paginate(20);
-        $stages = $this->indexRepository->index('Stage')->get();
+        $results = $this->indexRepository->index('Group')->where('deleted',0)->with('users')->with('stage')->paginate(20);
+        $stages = $this->indexRepository->index('Stage')->where('deleted',0)->get();
         return view('groups.index', compact('results', 'stages'));
     }
 
@@ -50,24 +51,27 @@ class GroupController extends Controller
         ]);
         $this->indexRepository
             ->update("Group", $request->except('_token','model_id'), $request->model_id);
-        return back()->with('success', 'تمت العملية بنجاح');
+        return redirect(route('groups'))->with('success', 'تمت العملية بنجاح');
 
     }
 
     public function delete(Request $request)
     {
+         
         $this->indexRepository->delete("Group",$request->model_id);
-        return back()->with('success', 'تمت العملية بنجاح');
+        return redirect(route('groups'))->with('success', 'تمت العملية بنجاح');
     }
 
     public function searchGroups(Request $request)
     {
         $results = $this->indexRepository->index('Group')
+            ->where('deleted',0)
             ->where('stage_id',$request->stage_id)
             ->with('users')
             ->with('stage')
             ->paginate(20);
-        $stages = $this->indexRepository->index('Stage')->get();
+        $stages = $this->indexRepository->index('Stage')
+            ->where('deleted',0)->get();
         return view('groups.index', compact('results', 'stages'));
     }
 

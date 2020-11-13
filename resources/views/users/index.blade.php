@@ -14,7 +14,7 @@
                         <li class="breadcrumb-item active">الطلاب</li>
                     </ol>
                 </div>
-                <h4 class="page-title p-2">الطلاب
+                <h4 class=" p-2">الطلاب
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal"><i
                             class="icon-plus"></i>
                         اضافة طالب
@@ -60,7 +60,9 @@
                     {{--                        borders on all sides of the table and cells.--}}
                     {{--                    </p>--}}
 
-                    <table class="table table-bordered">
+                    <div class="table-rep-plugin">
+                        <div class="table-responsive b-0" data-pattern="priority-columns">
+                            <table id="tech-companies-1" class="table  table-bordered">
                         <thead>
                         <tr>
                             <th>#</th>
@@ -140,10 +142,10 @@
                                                             <div class="container col-md-12">
                                                                 <div class="form-group row ">
                                                                     <div
-                                                                        class="col-md-6 form-control btn-square text-center">
+                                                                        class="col-md-6 form-control btn-square btn-warning text-center ">
                                                                         <b>الاختبار</b></div>
                                                                     <div
-                                                                        class="col-md-6 form-control btn-square text-center">
+                                                                        class="col-md-6 form-control btn-square btn-warning text-center ">
                                                                         <b>النتيجة</b></div>
                                                                 </div>
                                                             </div>
@@ -154,14 +156,14 @@
                                                             <div class="row ">
                                                                 <div class=" col-md-12">
                                                                     <div class="form-group row ">
-                                                                        <div class="col-md-6   text-center">
-                                                                            <b>#{{$answer->exam_id}}</b><br>
-                                                                            <b> اسم الامتحان: {{$answer->exam($answer->exam_id)->name}}</b><br>
-                                                                            <b> رقم الامتحان: {{$answer->exam($answer->exam_id)->exam_num}}</b><br>
-                                                                            <b> مدة الامتحان: {{$answer->exam($answer->exam_id)->duration}}</b><br>
-                                                                            <b> درجة الامتحان: {{$answer->exam($answer->exam_id)->degree}}</b><br>
+                                                                        <div class="col-md-6 form-control btn-primary text-center">
+                                                                            <!--<b>#{{$answer->exam_id}}</b>-->
+                                                                            <b> اسم الامتحان: {{$answer->exam($answer->exam_id)->name}}</b>
+                                                                            <!--<b> رقم الامتحان: {{$answer->exam($answer->exam_id)->exam_num}}</b><br>-->
+                                                                            <!--<b> مدة الامتحان: {{$answer->exam($answer->exam_id)->duration}}</b><br>-->
+                                                                            <!--<b> درجة الامتحان: {{$answer->exam($answer->exam_id)->degree}}</b><br>-->
                                                                         </div>
-                                                                        <div class="col-md-6 form-control  text-center">
+                                                                        <div class="col-md-6 form-control btn-success text-center">
                                                                             <b> درحة الطالب :{{$answer->result}}</b></div>
                                                                     </div>
                                                                 </div>
@@ -301,7 +303,9 @@
                             </div>
                         @endforeach
                         </tbody>
-                    </table>
+                    </table>{{$results->links()}}
+                    </div>
+                    </div>
 
                 </div>
             </div>

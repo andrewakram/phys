@@ -18,7 +18,7 @@ class Stage extends Model
      * @var array
      */
     protected $fillable = [
-          'name'
+          'name','deleted'
     ];
 
     protected $hidden = [

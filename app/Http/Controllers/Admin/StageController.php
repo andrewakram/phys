@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 
+
 class StageController extends Controller
 {
     protected $indexRepository;
@@ -19,7 +20,7 @@ class StageController extends Controller
 
     public function index()
     {
-        $results = $this->indexRepository->index('Stage')->paginate(20);
+        $results = $this->indexRepository->index('Stage')->where('deleted',0)->paginate(20);
         return view('stages.index', compact('results'));
     }
 
@@ -53,6 +54,7 @@ class StageController extends Controller
 
     public function delete(Request $request)
     {
+        
         $this->indexRepository->delete("Stage",$request->model_id);
         return back()->with('success', 'تمت العملية بنجاح');
     }

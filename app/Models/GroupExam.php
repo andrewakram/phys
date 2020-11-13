@@ -20,7 +20,7 @@ class GroupExam extends Model
      */
     protected $table = "groups_exams";
     protected $fillable = [
-         'exam_id', 'group_id', 'start', 'end'
+         'exam_id', 'group_id', 'start', 'end','deleted'
     ];
 
     protected $hidden = [

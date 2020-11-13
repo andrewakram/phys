@@ -20,7 +20,7 @@ class UserQuestionResult extends Model
      */
     protected $table = "users_questions_results";
     protected $fillable = [
-         'user_id', 'question_id', 'answer_id', 'correct_answer_id', 'group_exam_id'
+         'user_id', 'question_id', 'answer_id', 'correct_answer_id', 'group_exam_id','deleted'
     ];
 
     protected $hidden = [

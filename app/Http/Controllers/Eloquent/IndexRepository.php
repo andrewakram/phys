@@ -43,12 +43,14 @@ class IndexRepository implements IndexRepositoryInterface
 
     public function delete($model,$id){
         $class="\\App\\Models\\".$model;
-        $class::destroy($id);
+        $obj = $class::whereId($id)->first();
+        $obj->update(['deleted' => 1 ]);
+        //$class::destroy($id);
     }
 
     public function checkIfExists($model,$colom,$value){
         $class="\\App\\Models\\".$model;
-        $check = $class::where($colom,$value)->first();
+        $check = $class::where($colom,$value)->where('deleted',0)->first();
         if($check)
             return true;
         return false;

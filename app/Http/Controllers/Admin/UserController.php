@@ -21,8 +21,8 @@ class UserController extends Controller
 
     public function index()
     {
-        $results = $this->indexRepository->index('User')->with('group')->paginate(20);
-        $groups = $this->indexRepository->index('Group')->get();
+        $results = $this->indexRepository->index('User')->where('deleted',0)->with('group')->paginate(20);
+        $groups = $this->indexRepository->index('Group')->where('deleted',0)->get();
         return view('users.index', compact('results', 'groups'));
     }
 
@@ -39,7 +39,7 @@ class UserController extends Controller
         else {
             $this->indexRepository
                 ->create("User", array_merge($request->all(), ['password' => Hash::make($request->password)]));
-            return back()->with('success', 'تمت العملية بنجاح');
+            return redirect(route('users'))->with('success', 'تمت العملية بنجاح');
         }
 
     }
@@ -51,7 +51,7 @@ class UserController extends Controller
         ]);
         $this->indexRepository
             ->update("User", array_merge($request->except('_token','model_id'), ['password' => Hash::make($request->password)]), $request->model_id);
-        return back()->with('success', 'تمت العملية بنجاح');
+        return redirect(route('users'))->with('success', 'تمت العملية بنجاح');
 
     }
 
@@ -80,9 +80,10 @@ class UserController extends Controller
     public function searchUsers(Request $request)
     {
         $results = $this->indexRepository->index('User')
+            ->where('deleted',0)
             ->where('group_id',$request->group_id)
             ->with('group')->paginate(20);
-        $groups = $this->indexRepository->index('Group')->get();
+        $groups = $this->indexRepository->index('Group')->where('deleted',0)->get();
         return view('users.index', compact('results', 'groups'));
     }
 }
