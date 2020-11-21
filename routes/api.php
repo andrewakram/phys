@@ -23,7 +23,13 @@ Route::group(['prefix' => '/user'], function () {
     Route::post('/update_profile', 'Api\User\AuthController@updateProfile');
     Route::get('/exams', 'Api\User\ExamsController@examData');
     Route::post('/examData', 'Api\User\ExamsController@examQuestions');
-    
+
     Route::get('/my-exams', 'Api\User\ExamsController@myExams');
     Route::post('/finish-exam', 'Api\User\ExamsController@finishExam');
+
+
+    //sessions
+
+    Route::get('/sessions', 'Api\User\SessionsController@Sessions');
+    Route::get('/sessionDetails/{id}', 'Api\User\SessionsController@SessionDetails');
 });

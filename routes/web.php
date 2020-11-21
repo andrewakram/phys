@@ -68,5 +68,53 @@ Route::group(['prefix' => '/admin', 'namespace' => 'Admin'], function () {
             Route::post('/delete', 'GroupExamController@delete')->name('deleteGroupExam');
             Route::post('/', 'GroupExamController@searchGroupExams')->name('searchGroupExams');
         });
+
+        Route::group(['prefix' => 'videos'], function () {
+            Route::get('/', 'VideoController@index')->name('videos');
+            Route::post('/add', 'VideoController@store')->name('addVideo');
+            Route::post('/edit', 'VideoController@update')->name('editVideo');
+            Route::post('/delete', 'VideoController@delete')->name('deleteVideo');
+            Route::post('/', 'VideoController@searchVideos')->name('searchVideos');
+        });
+
+        Route::group(['prefix' => 'sessions'], function () {
+            Route::get('/', 'SessionController@index')->name('sessions');
+            Route::post('/add', 'SessionController@store')->name('addSession');
+            Route::post('/edit', 'SessionController@update')->name('editSession');
+            Route::post('/delete', 'SessionController@delete')->name('deleteSession');
+        });
+
+        Route::group(['prefix' => 'sessions_groups'], function () {
+            Route::get('/', 'SessionGroupController@index')->name('sessions_groups');
+            Route::post('/add', 'SessionGroupController@store')->name('addSessionGroup');
+            Route::post('/edit', 'SessionGroupController@update')->name('editSessionGroup');
+            Route::post('/delete', 'SessionGroupController@delete')->name('deleteSessionGroup');
+            Route::post('/', 'SessionGroupController@searchSessionGroups')->name('searchSessionGroups');
+        });
+
+        Route::group(['prefix' => 'tests'], function () {
+            Route::get('/', 'TestController@index')->name('tests');
+            Route::post('/add', 'TestController@store')->name('addTest');
+            Route::post('/edit', 'TestController@update')->name('editTest');
+            Route::post('/delete', 'TestController@delete')->name('deleteTest');
+            Route::post('/', 'TestController@searchTests')->name('searchTests');
+        });
+        Route::group(['prefix' => 'querries'], function () {
+            Route::get('/', 'QuerryController@index')->name('querries');
+            Route::post('/add', 'QuerryController@store')->name('addQuerry');
+            Route::post('/edit', 'QuerryController@update')->name('editQuerry');
+            Route::post('/delete', 'QuerryController@delete')->name('deleteQuerry');
+            Route::post('/', 'QuerryController@searchQuerries')->name('searchQuerries');
+        });
+
+        Route::group(['prefix' => 'promocodes'], function () {
+            Route::get('/', 'PromocodeController@index')->name('promocodes');
+            Route::post('/add', 'PromocodeController@store')->name('addPromocode');
+            Route::post('/edit', 'PromocodeController@update')->name('editPromocode');
+            Route::post('/delete', 'PromocodeController@delete')->name('deletePromocode');
+            Route::post('/', 'PromocodeController@searchPromocodes')->name('searchPromocodes');
+            Route::post('/getGroups', 'PromocodeController@getGroups')->name('getGroups');
+            Route::post('/getUsers', 'PromocodeController@getUsers')->name('getUsers');
+        });
     });
 });

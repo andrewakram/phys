@@ -335,7 +335,33 @@
                             <li>
                                 <a href="{{route('groups')}}" ><i class="mdi mdi-airplane"></i>المجموعات</a>
                             </li>
+
+                            <li class="has-submenu">
+                                <a href="#"><i class="mdi mdi-google-pages"></i>الامتحانات</a>
+                                <ul class="submenu">
+                                    <li><a href="{{route('exams')}}">الامتحانات</a></li>
+                                    <li><a href="{{route('questions')}}">الاسئلة</a></li>
+                                    <li><a href="{{route('groups_exams')}}">ختبارات المجموعات</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="has-submenu">
+                                <a href="#"><i class="mdi mdi-buffer"></i>الحصص</a>
+                                <ul class="submenu">
+                                    <li><a href="{{route('videos')}}">الفديوهات</a></li>
+                                    <li><a href="{{route('sessions')}}">الحصص</a></li>
+                                    <li><a href="{{route('sessions_groups')}}">حصص المجموعات</a></li>
+                                    <li><a href="{{route('tests')}}">اختبارات</a></li>
+                                    <li><a href="{{route('querries')}}">اسئلة</a></li>
+
+                                </ul>
+                            </li>
+
                             <li>
+                                <a href="{{route('promocodes')}}" ><i class="mdi mdi-cube-outline"></i> اكواد الخصم</a>
+                            </li>
+
+                            {{--<li>
                                 <a href="{{route('exams')}}" ><i class="mdi mdi-airplane"></i>الامتحانات</a>
                             </li>
                             <li>
@@ -343,16 +369,16 @@
                             </li>
                             <li>
                                 <a href="{{route('groups_exams')}}" ><i class="mdi mdi-airplane"></i>اختبارات المجموعات</a>
-                            </li>
+                            </li>--}}
 
                         </ul>
                         <!-- End navigation menu -->
                     </div> <!-- end #navigation -->
-                    
+
                 </div> <!-- end container -->
-            
+
             </div> <!-- end navbar-custom -->
-            
+
         </header>
         <!-- End Navigation Bar-->
 

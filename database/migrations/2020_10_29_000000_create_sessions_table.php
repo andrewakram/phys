@@ -17,6 +17,7 @@ class CreateSessionsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name')->nullable();
             $table->bigInteger('stage_id')->unsigned()->nullable();
+            $table->string('price')->nullable();
             $table->timestamp('from')->nullable();
             $table->timestamp('to')->nullable();
             $table->softDeletes();

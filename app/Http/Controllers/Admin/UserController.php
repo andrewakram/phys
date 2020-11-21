@@ -21,7 +21,7 @@ class UserController extends Controller
 
     public function index()
     {
-        $results = $this->indexRepository->index('User')->where('deleted',0)->with('group')->paginate(20);
+        $results = $this->indexRepository->index('User')->where('deleted',0)->with('group')->paginate(60);
         $groups = $this->indexRepository->index('Group')->where('deleted',0)->get();
         return view('users.index', compact('results', 'groups'));
     }
@@ -82,7 +82,7 @@ class UserController extends Controller
         $results = $this->indexRepository->index('User')
             ->where('deleted',0)
             ->where('group_id',$request->group_id)
-            ->with('group')->paginate(20);
+            ->with('group')->paginate(60);
         $groups = $this->indexRepository->index('Group')->where('deleted',0)->get();
         return view('users.index', compact('results', 'groups'));
     }

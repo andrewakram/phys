@@ -3,6 +3,24 @@
   <component name="ChangeListManager">
     <list default="true" id="694e53ef-0359-44cb-8de1-feb7c78e0354" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app (1).zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/User/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/User/AuthController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/User/ExamsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/User/ExamsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WebController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Querry.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Querry.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Session.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Session.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/SessionTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/SessionTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/SessionVideo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/SessionVideo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Test.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Test.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/UserTestResult.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/UserTestResult.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Video.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Video.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_29_000000_create_sessions_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_29_000000_create_sessions_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_30_000000_create_tests_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_30_000000_create_tests_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +138,12 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../motawen" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
@@ -166,7 +189,10 @@
       <workItem from="1603627325864" duration="783000" />
       <workItem from="1603632920383" duration="4148000" />
       <workItem from="1604377339408" duration="622000" />
-      <workItem from="1605185253071" duration="9634000" />
+      <workItem from="1605185253071" duration="19680000" />
+      <workItem from="1605561997587" duration="2169000" />
+      <workItem from="1605739759413" duration="41217000" />
+      <workItem from="1605962621302" duration="12309000" />
     </task>
     <servers />
   </component>
@@ -174,22 +200,22 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="233" y="8" key="#Deployment" timestamp="1605277698483">
+    <state x="233" y="8" key="#Deployment" timestamp="1605967679266">
       <screen x="0" y="0" width="1280" height="690" />
     </state>
-    <state x="233" y="8" key="#Deployment/0.0.1280.690@0.0.1280.690" timestamp="1605277698483" />
-    <state x="371" y="104" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1603059495013">
+    <state x="233" y="8" key="#Deployment/0.0.1280.690@0.0.1280.690" timestamp="1605967679266" />
+    <state x="371" y="104" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1605965975698">
       <screen x="0" y="0" width="1280" height="690" />
     </state>
-    <state x="371" y="104" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.690@0.0.1280.690" timestamp="1603059495013" />
-    <state x="421" y="104" key="FileChooserDialogImpl" timestamp="1605199311994">
+    <state x="371" y="104" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.690@0.0.1280.690" timestamp="1605965975698" />
+    <state x="421" y="104" key="FileChooserDialogImpl" timestamp="1605982367439">
       <screen x="0" y="0" width="1280" height="690" />
     </state>
-    <state x="421" y="104" key="FileChooserDialogImpl/0.0.1280.690@0.0.1280.690" timestamp="1605199311994" />
-    <state x="349" y="174" key="com.intellij.ide.util.TipDialog" timestamp="1603609861295">
+    <state x="421" y="104" key="FileChooserDialogImpl/0.0.1280.690@0.0.1280.690" timestamp="1605982367439" />
+    <state x="349" y="174" key="com.intellij.ide.util.TipDialog" timestamp="1605962681157">
       <screen x="0" y="0" width="1280" height="690" />
     </state>
-    <state x="349" y="174" key="com.intellij.ide.util.TipDialog/0.0.1280.690@0.0.1280.690" timestamp="1603609861295" />
+    <state x="349" y="174" key="com.intellij.ide.util.TipDialog/0.0.1280.690@0.0.1280.690" timestamp="1605962681157" />
     <state x="452" y="265" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1602954809004">
       <screen x="0" y="0" width="1280" height="690" />
     </state>

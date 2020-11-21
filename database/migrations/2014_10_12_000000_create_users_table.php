@@ -18,6 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('name')->nullable();
             $table->string('jwt')->nullable();
             $table->string('phone')->unique();
+            $table->bigInteger('points')->default(0);
             $table->tinyInteger('active')->default(1);
             $table->bigInteger('group_id')->unsigned()->nullable();
             $table->string('password')->nullable();

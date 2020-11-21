@@ -61,9 +61,10 @@ class AuthController extends Controller
         if ($users != null) {
 
             $validator = Validator::make($input, [
-                'name' => 'unique:users,name,' . $users->id,
-                'phone' => 'unique:users,phone,' . $users->id,
-                'password' => 'min:6',
+                'name' => 'sometimes|nullable|unique:users,name,' . $users->id,
+                'phone' => 'sometimes|nullable|unique:users,phone,' . $users->id,
+                'password' => 'sometimes|nullable|min:6',
+                'image' => 'mimes:jpeg,jpg,png,gif|sometimes|nullable'
             ]);
             if ($request->name != null) {
                 $users->name = $request->name;
@@ -74,8 +75,12 @@ class AuthController extends Controller
             if ($request->password != null) {
                 $users->password = Hash::make($request->password);
             }
+            if ($request->image != null) {
+                $users->image = $request->image;
+            }
             $users->save();
             return response()->json(msgdata($request, success(), 'success', $users));
         } else return response()->json(msg($request, failed(), 'invalid_data'));
     }
+
 }

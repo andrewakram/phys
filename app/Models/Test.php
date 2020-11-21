@@ -19,20 +19,33 @@ class Test extends Model
      * @var array
      */
     protected $fillable = [
-         'exam_num', 'name', 'duration', 'degree', 'stage_id','deleted'
+         'test_num', 'name', 'duration', 'degree',
+        'pass_degree','points_degree', 'points', 'stage_id','deleted'
     ];
 
     protected $hidden = [
         'deleted_at', 'updated_at'
     ];
 
+    protected $casts = [
+        'stage_id' => 'integer',
+        'degree' => 'float',
+        'pass_degree' => 'float',
+    ];
+
     public function stage(){
         return $this->belongsTo(Stage::class,'stage_id');
     }
 
-    public function questions(){
-        return $this->hasMany(Question::class,'exam_id');
+    public function querries(){
+        return $this->hasMany(Querry::class,'test_id');
     }
+
+    public function Session()
+    {
+        return $this->belongsToMany('App\Models\Session');
+    }
+
 
     public function setExamNumAttribute()
     {

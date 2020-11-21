@@ -34,27 +34,29 @@ class ExamsController extends Controller
         $users = checkJWT($request->header('jwt'));
         if ($users != null) {
             $group_id = $users->group_id;
-            $exam [] = null;
             $doneExams = UserExamResult::where('user_id',$users->id)
                 ->where('deleted',0)
                 ->pluck('group_exam_id');
+               
             $exams=  GroupExam::where('group_id', $group_id)
                 ->where('deleted',0)
                 ->whereNotIn('id',$doneExams)
                 ->with('exam')
                 ->get();
+            
             foreach($exams as $exam){ 
                 $examData = Exam::whereId($exam->exam_id)->first();
                 
                 $exam['name'] = $examData->name;
                 $exam['duration'] = $examData->duration;
                 $exam['degree'] = $examData->degree;
-                if($exam->start <= Carbon::now() || $exam->end >= Carbon::now()){
+                if($exam->start <= Carbon::now() && $exam->end >= Carbon::now()){
                     $exam['status'] = true;
                 }else{
                     $exam['status'] = false;
                 }
             }
+            
             return response()->json(msgdata($request, success(), 'success', $exams));
         } else return response()->json(msg($request, not_authoize(), 'invalid_data'));
     }

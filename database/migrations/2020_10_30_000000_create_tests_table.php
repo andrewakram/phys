@@ -19,6 +19,9 @@ class CreateTestsTable extends Migration
             $table->string('name');
             $table->string('duration');
             $table->string('degree');
+            $table->string('pass_degree')->nullable();
+            $table->string('points_degree')->nullable();
+            $table->bigInteger('points')->nullable();
             $table->bigInteger('stage_id')->unsigned();
             $table->softDeletes();
             $table->timestamps();

@@ -13,6 +13,7 @@ class SessionVideo extends Model
 {
     use Notifiable,SoftDeletes;
 
+    protected $table = "sessions_videos";
     /**
      * The attributes that are mass assignable.
      *
@@ -25,6 +26,10 @@ class SessionVideo extends Model
     protected $hidden = [
         'deleted_at', 'updated_at'
     ];
+
+    public function video(){
+        return $this->belongsTo(Video::class,'video_id');
+    }
 
     public function stage(){
         return $this->belongsTo(Stage::class,'stage_id');

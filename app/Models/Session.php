@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
@@ -19,25 +20,45 @@ class Session extends Model
      * @var array
      */
     protected $fillable = [
-         'stage_id', 'name', 'feom', 'to'
+         'stage_id', 'name','price', 'from', 'to','deleted'
     ];
 
     protected $hidden = [
         'deleted_at', 'updated_at'
     ];
 
+    public function session_videos(){
+        return $this->hasMany(SessionVideo::class,'session_id');
+    }
+
+    public function session_tests(){
+        return $this->hasMany(SessionTest::class,'session_id');
+    }
+
     public function stage(){
         return $this->belongsTo(Stage::class,'stage_id');
     }
 
-    public function questions(){
-        return $this->hasMany(Question::class,'exam_id');
+    public function tests(){
+        return $this->belongsToMany('App\Models\Test','sessions_tests');
     }
 
-    public function setExamNumAttribute()
-    {
-        $this->attributes['exam_num'] = rand(100,999) .' - '. Str::random(3) ;
+    public function videos(){
+        return $this->belongsToMany('App\Models\Video','sessions_videos');
     }
+
+    public function getFromAttribute()
+    {
+        return Carbon::parse($this->attributes['from'])->format('Y-m-d g:i A');
+    }
+
+    public function getToAttribute()
+    {
+        return Carbon::parse($this->attributes['to'])->format('Y-m-d g:i A');
+    }
+
+
+
 
 
 }

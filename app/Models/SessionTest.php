@@ -18,6 +18,7 @@ class SessionTest extends Model
      *
      * @var array
      */
+    protected $table = "sessions_tests";
     protected $fillable = [
          'test_id', 'session_id'
     ];
@@ -25,6 +26,10 @@ class SessionTest extends Model
     protected $hidden = [
         'deleted_at', 'updated_at'
     ];
+
+    public function test(){
+        return $this->belongsTo(Test::class,'test_id');
+    }
 
     public function stage(){
         return $this->belongsTo(Stage::class,'stage_id');

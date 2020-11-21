@@ -26,17 +26,14 @@ class Video extends Model
         'deleted_at', 'updated_at'
     ];
 
-    public function stage(){
-        return $this->belongsTo(Stage::class,'stage_id');
-    }
-
-    public function questions(){
-        return $this->hasMany(Question::class,'exam_id');
-    }
-
-    public function setExamNumAttribute()
+    public function session_videos()
     {
-        $this->attributes['exam_num'] = rand(100,999) .' - '. Str::random(3) ;
+        return $this->belongsTo(SessionVideo::class,'session_id');
+    }
+
+    public function Session()
+    {
+        return $this->belongsToMany('App\Models\Session');
     }
 
 

@@ -26,12 +26,12 @@ class Querry extends Model
         'deleted_at', 'updated_at'
     ];
 
-    public function answers(){
-        return $this->hasMany(Answer::class, 'question_id');
+    public function replies(){
+        return $this->hasMany(Reply::class, 'querry_id');
     }
 
-    public function exam(){
-        return $this->belongsTo(Exam::class,'exam_id');
+    public function test(){
+        return $this->belongsTo(Test::class,'test_id');
     }
 
     public function setImageAttribute($value)
